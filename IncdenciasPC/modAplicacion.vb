@@ -22,6 +22,11 @@ Module modAplicacion
     'Constante que contiene el codigo ASCII del caracter punto (.)
     Private Const gc_intPunto As Integer = 46
 
+    'Constante que determina de que base de datos se obtendran los datos de los clientes
+    '   True = Los tados se obtendran de la base de datos de incidencias
+    '   False = Los datos se obtendran de la base de datos de FactuSOL
+    Public Const gc_blnDBLocal As Boolean = False
+
     '<CABECERA>-----------------------------------------------
     'Nombre...........: strPonerCorchetes
     'Descripcion......: Añade corchetes a ambos lados de la cadena pasada, esta funcion se utiliza
@@ -121,4 +126,44 @@ Module modAplicacion
         End Try
     End Function
 
+    '<CABECERA>-----------------------------------------------
+    'Descripcion......: Comprueba que todos los caracteres de la cadena de texto sean numeros
+    'Fecha............: 22/05/2014
+    '<FIN CABECERA>-------------------------------------------
+    Function blnSoloNumeros(ByVal txtTexto As String) As Boolean
+
+        Const strNombre_Funcion As String = "strComaPunto"
+        Dim blnError As Boolean
+
+        Const txtListaNumeros As String = "0123456789"
+        Dim blnResultado As Boolean
+        Dim cadenaTemporal As String
+        Dim i As Integer
+
+        Try
+            txtTexto = Trim$(txtTexto)
+            If Len(txtTexto) = 0 Then
+                blnResultado = False
+            Else
+                cadenaTemporal = ""
+
+                For i = 1 To Len(txtTexto)
+                    If Not InStr(txtListaNumeros, Mid$(txtTexto, i, 1)) Then
+                        blnResultado = False
+                        Exit For
+                    Else
+                        blnResultado = True
+                    End If
+                Next
+            End If
+        Catch ex As Exception
+            blnError = True
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        Finally
+            If blnError Then
+                blnResultado = False
+            End If
+            blnSoloNumeros = blnResultado
+        End Try
+    End Function
 End Module

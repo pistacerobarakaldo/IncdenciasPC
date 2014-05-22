@@ -352,13 +352,13 @@ Module modBDConstantes
     Public Const gc_strDB_D_Fax As String = "FAXCLI"
     Public Const gc_strDB_D_Movil As String = "MOVCLI"
     Public Const gc_strDB_D_ContCliente As String = "PCOCLI"
-    Public Const gc_strDB_D_FormaPago As String = "FPACLI"
-    Public Const gc_strDB_V_Tarifa As String = "TARCLI"
+    Public Const gc_strDB_D_FormaPago As String = "FPACLI" ' = 0
+    Public Const gc_strDB_V_Tarifa As String = "TARCLI" ' = 1
     Public Const gc_strDB_F_Alta As String = "FALCLI"
     Public Const gc_strDB_D_Email As String = "EMACLI"
     Public Const gc_strDB_D_Observ As String = "OBSCLI"
     Public Const gc_strDB_D_Pais As String = "PAICLI"
-    Public Const gc_strDB_V_TipoDoc As String = "IFICLI"
+    Public Const gc_strDB_V_TipoDoc As String = "IFICLI" ' = 1
     Public Const gc_strDB_F_Modif As String = "FUMCLI"
     '######################################################
 

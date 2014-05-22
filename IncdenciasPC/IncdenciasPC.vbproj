@@ -77,6 +77,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base de Datos\modDBAccessSOL.vb" />
+    <Compile Include="Formularios\frmHistorialIncidenciasCliente.Designer.vb">
+      <DependentUpon>frmHistorialIncidenciasCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmHistorialIncidenciasCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmFichaCliente.Designer.vb">
+      <DependentUpon>frmFichaCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmFichaCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmDetallesCliente.Designer.vb">
+      <DependentUpon>frmDetallesCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmDetallesCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmMantenimiento.Designer.vb">
+      <DependentUpon>frmMantenimiento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmMantenimiento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modBDQClientes.vb" />
+    <Compile Include="modDBGClientes.vb" />
+    <Compile Include="modGestClientes.vb" />
+    <Compile Include="Formularios\frmBusquedaClientes.Designer.vb">
+      <DependentUpon>frmBusquedaClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmBusquedaClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\frmEdicionLineaHistorial.Designer.vb">
       <DependentUpon>frmEdicionLineaHistorial.vb</DependentUpon>
     </Compile>
@@ -161,8 +194,21 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Objetos\clsIncidencia.vb" />
+    <Compile Include="Objetos\clsCliente.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formularios\frmHistorialIncidenciasCliente.resx">
+      <DependentUpon>frmHistorialIncidenciasCliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmFichaCliente.resx">
+      <DependentUpon>frmFichaCliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBusquedaClientes.resx">
+      <DependentUpon>frmBusquedaClientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmDetallesCliente.resx">
+      <DependentUpon>frmDetallesCliente.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmEdicionLineaHistorial.resx">
       <DependentUpon>frmEdicionLineaHistorial.vb</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmIncidencia.resx">
       <DependentUpon>frmIncidencia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmMantenimiento.resx">
+      <DependentUpon>frmMantenimiento.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmMantenimientos.resx">
       <DependentUpon>frmMantenimientos.vb</DependentUpon>

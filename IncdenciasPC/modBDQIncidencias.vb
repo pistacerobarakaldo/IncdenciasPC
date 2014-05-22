@@ -132,7 +132,7 @@ Module modBDQIncidencias
 
             'VALUES
             strQuery = strQuery & "VALUES ("
-            strQuery = strQuery & ", " & objIncidencia.Id
+            strQuery = strQuery & objIncidencia.Id
             strQuery = strQuery & ", #" & Format(objIncidencia.Fecha, "MM/dd/yyyy") & "#"
             strQuery = strQuery & ", " & objIncidencia.IdCliente
             strQuery = strQuery & ", '" & objIncidencia.Cliente & "'"
@@ -312,7 +312,7 @@ Module modBDQIncidencias
             strQuery = strQuery & ", " & objRow(gc_strLP_C_Linea)
             strQuery = strQuery & ", " & objRow(gc_strDB_C_Estado)
             strQuery = strQuery & ", #" & Format(objRow(gc_strLP_F_Fecha), "MM/dd/yyyy") & "#"
-            strQuery = strQuery & ", '" & objRow(gc_strLP_C_Linea) & "'"
+            strQuery = strQuery & ", '" & objRow(gc_strLP_D_Descripcion) & "'"
             strQuery = strQuery & ")"
         Catch ex As Exception
             blnError = True

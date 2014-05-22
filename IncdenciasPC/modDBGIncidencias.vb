@@ -199,15 +199,36 @@ Module modDBGIncidencias
                 '   Borramos el Historial que exista con el Id indicado
                 strQuery = Inci_strQueryEliminarLineasActuacion(objIncidencia.Id)
                 If blnEjecutarQuery(strQuery) Then
-                    '   Añadimos cada linea activa del Historial
+                    For Each objRow In objIncidencia.Historial.Rows
+                        objRow(gc_strLP_C_Incidencia) = objIncidencia.Id
+                        If objRow.RowState <> DataRowState.Deleted Then
+                            'Añadimos cada linea activa del Historial
+                            strQuery = Inci_strQueryNuevaLineaActuacion(objRow)
+                            If Not blnEjecutarQuery(strQuery) Then
+                                blnResultado = False
+                                Exit For
+                            End If
+                        End If
+                    Next
                 End If
-                'Guardamos el presupuesto
-                '   Borramos las lineas de presupuesto que existan con el Id indicado
-                strQuery = Inci_strQueryEliminarLineasPresupuesto(objIncidencia.Id)
-                If blnEjecutarQuery(strQuery) Then
-                    '   Añadimos cada linea activa del presupuesto
+                If blnResultado Then
+                    'Guardamos el presupuesto
+                    '   Borramos las lineas de presupuesto que existan con el Id indicado
+                    strQuery = Inci_strQueryEliminarLineasPresupuesto(objIncidencia.Id)
+                    If blnEjecutarQuery(strQuery) Then
+                        For Each objRow In objIncidencia.Presupuesto.Rows
+                            objRow(gc_strLP_C_Incidencia) = objIncidencia.Id
+                            If objRow.RowState <> DataRowState.Deleted Then
+                                'Añadimos cada linea activa del presupuesto
+                                strQuery = Inci_strQueryNuevaLineaPresupuesto(objRow)
+                                If blnEjecutarQuery(strQuery) Then
+                                    blnResultado = False
+                                    Exit For
+                                End If
+                            End If
+                        Next
+                    End If
                 End If
-
             Else
                 blnResultado = False
             End If
