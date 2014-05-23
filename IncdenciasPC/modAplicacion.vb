@@ -27,14 +27,14 @@ Module modAplicacion
     '   False = Los datos se obtendran de la base de datos de FactuSOL
     Public Const gc_blnDBLocal As Boolean = False
 
+    'Variables globales en las que se guarda la ubicacion de la base de datos principal y de Factusol que se estan utilizando
+    Public gv_strDBPrincipal As String
+    Public gv_strDBFactusol As String
+
     '<CABECERA>-----------------------------------------------
-    'Nombre...........: strPonerCorchetes
     'Descripcion......: Añade corchetes a ambos lados de la cadena pasada, esta funcion se utiliza
     '                   para crear los alias de la Base de Datos
     'Fecha............: 11/10/2011
-    'Autor............: Borja Escudero
-    'Parametros.......: strCadena = Cadena que se pasa para ponerle los corchetes
-    '                   blnLlaves = Variable que determia el caracter a añadir
     '<FIN CABECERA>-------------------------------------------
     Public Function strPonerCorchetes(ByRef strCadena As String, Optional ByVal blnLlaves As Boolean = False) As String
 
@@ -62,6 +62,10 @@ Module modAplicacion
         End Try
     End Function
 
+    '<CABECERA>-----------------------------------------------
+    'Descripcion......: Obtiene el estado recibiendo el ID
+    'Fecha............: 15/05/2014
+    '<FIN CABECERA>-------------------------------------------
     Public Function ObtenerEstado(ByVal lngId As Long) As String
 
         Const strNombre_Funcion As String = "ObtenerEstado"

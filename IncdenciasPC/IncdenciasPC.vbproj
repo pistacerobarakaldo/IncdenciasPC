@@ -48,6 +48,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="RichTextBoxPrintCtrl">
@@ -77,107 +80,116 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base de Datos\modDBAccessSOL.vb" />
-    <Compile Include="Formularios\frmHistorialIncidenciasCliente.Designer.vb">
+    <Compile Include="Clases\clsIncidencia.vb" />
+    <Compile Include="Formularios\Clientes\Ficha Cliente\frmHistorialIncidenciasCliente.Designer.vb">
       <DependentUpon>frmHistorialIncidenciasCliente.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmHistorialIncidenciasCliente.vb">
+    <Compile Include="Formularios\Clientes\Ficha Cliente\frmHistorialIncidenciasCliente.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmFichaCliente.Designer.vb">
+    <Compile Include="Formularios\Clientes\Ficha Cliente\frmFichaCliente.Designer.vb">
       <DependentUpon>frmFichaCliente.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmFichaCliente.vb">
+    <Compile Include="Formularios\Clientes\Ficha Cliente\frmFichaCliente.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmDetallesCliente.Designer.vb">
+    <Compile Include="Formularios\Clientes\Ficha Cliente\frmDetallesCliente.Designer.vb">
       <DependentUpon>frmDetallesCliente.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmDetallesCliente.vb">
+    <Compile Include="Formularios\Clientes\Ficha Cliente\frmDetallesCliente.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmMantenimiento.Designer.vb">
+    <Compile Include="Formularios\Clientes\Ficha Cliente\frmMantenimiento.Designer.vb">
       <DependentUpon>frmMantenimiento.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmMantenimiento.vb">
+    <Compile Include="Formularios\Clientes\Ficha Cliente\frmMantenimiento.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="modBDQClientes.vb" />
-    <Compile Include="modDBGClientes.vb" />
+    <Compile Include="Base de Datos\SQL\modBDQClientes.vb" />
+    <Compile Include="Base de Datos\Gestion\modDBGClientes.vb" />
+    <Compile Include="Formularios\frmPrincipal.Designer.vb">
+      <DependentUpon>frmPrincipal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmPrincipal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="INI\modConstantesINI.vb" />
     <Compile Include="modGestClientes.vb" />
-    <Compile Include="Formularios\frmBusquedaClientes.Designer.vb">
+    <Compile Include="Formularios\Incidencias\Ficha Incidencia\frmBusquedaClientes.Designer.vb">
       <DependentUpon>frmBusquedaClientes.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmBusquedaClientes.vb">
+    <Compile Include="Formularios\Incidencias\Ficha Incidencia\frmBusquedaClientes.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmEdicionLineaHistorial.Designer.vb">
+    <Compile Include="Formularios\Incidencias\Ficha Incidencia\frmEdicionLineaHistorial.Designer.vb">
       <DependentUpon>frmEdicionLineaHistorial.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmEdicionLineaHistorial.vb">
+    <Compile Include="Formularios\Incidencias\Ficha Incidencia\frmEdicionLineaHistorial.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="modDBQConfiguracion.vb" />
-    <Compile Include="Objetos\clsElementoCombo.vb" />
-    <Compile Include="Formularios\frmLineasPresupuesto.Designer.vb">
-      <DependentUpon>frmLineasPresupuesto.vb</DependentUpon>
+    <Compile Include="Base de Datos\SQL\modDBQConfiguracion.vb" />
+    <Compile Include="Clases\clsElementoCombo.vb" />
+    <Compile Include="Formularios\Incidencias\Ficha Incidencia\frmPresupuesto.Designer.vb">
+      <DependentUpon>frmPresupuesto.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmLineasPresupuesto.vb">
+    <Compile Include="Formularios\Incidencias\Ficha Incidencia\frmPresupuesto.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmHistorialActuacion.Designer.vb">
+    <Compile Include="Formularios\Incidencias\Ficha Incidencia\frmHistorialActuacion.Designer.vb">
       <DependentUpon>frmHistorialActuacion.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmHistorialActuacion.vb">
+    <Compile Include="Formularios\Incidencias\Ficha Incidencia\frmHistorialActuacion.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmDetallesIncidencia.Designer.vb">
+    <Compile Include="Formularios\Incidencias\Ficha Incidencia\frmDetallesIncidencia.Designer.vb">
       <DependentUpon>frmDetallesIncidencia.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmDetallesIncidencia.vb">
+    <Compile Include="Formularios\Incidencias\Ficha Incidencia\frmDetallesIncidencia.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmIncidencia.Designer.vb">
-      <DependentUpon>frmIncidencia.vb</DependentUpon>
+    <Compile Include="Formularios\Incidencias\Ficha Incidencia\frmFichaIncidencia.Designer.vb">
+      <DependentUpon>frmFichaIncidencia.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmIncidencia.vb">
+    <Compile Include="Formularios\Incidencias\Ficha Incidencia\frmFichaIncidencia.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmMantenimientos.Designer.vb">
-      <DependentUpon>frmMantenimientos.vb</DependentUpon>
+    <Compile Include="Formularios\Mantenimientos\frmListadoMantenimientos.Designer.vb">
+      <DependentUpon>frmListadoMantenimientos.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmMantenimientos.vb">
+    <Compile Include="Formularios\Mantenimientos\frmListadoMantenimientos.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmClientes.Designer.vb">
-      <DependentUpon>frmClientes.vb</DependentUpon>
+    <Compile Include="Formularios\Clientes\frmListadoClientes.Designer.vb">
+      <DependentUpon>frmListadoClientes.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmClientes.vb">
+    <Compile Include="Formularios\Clientes\frmListadoClientes.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmListadoIncidencias.vb">
+    <Compile Include="Formularios\Incidencias\frmListadoIncidencias.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmListadoIncidencias.Designer.vb">
+    <Compile Include="Formularios\Incidencias\frmListadoIncidencias.Designer.vb">
       <DependentUpon>frmListadoIncidencias.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmNotificaciones.Designer.vb">
+    <Compile Include="Formularios\Principal\frmNotificaciones.Designer.vb">
       <DependentUpon>frmNotificaciones.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmNotificaciones.vb">
+    <Compile Include="Formularios\Principal\frmNotificaciones.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modAplicacion.vb" />
-    <Compile Include="modBDQIncidencias.vb" />
+    <Compile Include="Base de Datos\SQL\modBDQIncidencias.vb" />
     <Compile Include="modConfigComboBox.vb" />
     <Compile Include="modConfigDataGrid.vb" />
-    <Compile Include="Constantes\modDBConstantes.vb" />
+    <Compile Include="Base de Datos\Constantes\modDBConstantes.vb" />
     <Compile Include="modDB.vb" />
     <Compile Include="Base de Datos\modDBAccess.vb" />
-    <Compile Include="modDBGIncidencias.vb" />
+    <Compile Include="Base de Datos\Gestion\modDBGIncidencias.vb" />
     <Compile Include="modGestIncidencias.vb" />
+    <Compile Include="INI\modGestionINI.vb" />
     <Compile Include="modLog.vb" />
-    <Compile Include="Constantes\modLPConstantes.vb" />
+    <Compile Include="Base de Datos\Constantes\modLPConstantes.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -193,50 +205,52 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Objetos\clsIncidencia.vb" />
-    <Compile Include="Objetos\clsCliente.vb" />
+    <Compile Include="Clases\clsCliente.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Formularios\frmHistorialIncidenciasCliente.resx">
+    <EmbeddedResource Include="Formularios\Clientes\Ficha Cliente\frmHistorialIncidenciasCliente.resx">
       <DependentUpon>frmHistorialIncidenciasCliente.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmFichaCliente.resx">
+    <EmbeddedResource Include="Formularios\Clientes\Ficha Cliente\frmFichaCliente.resx">
       <DependentUpon>frmFichaCliente.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmBusquedaClientes.resx">
+    <EmbeddedResource Include="Formularios\frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Incidencias\Ficha Incidencia\frmBusquedaClientes.resx">
       <DependentUpon>frmBusquedaClientes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmDetallesCliente.resx">
+    <EmbeddedResource Include="Formularios\Clientes\Ficha Cliente\frmDetallesCliente.resx">
       <DependentUpon>frmDetallesCliente.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmEdicionLineaHistorial.resx">
+    <EmbeddedResource Include="Formularios\Incidencias\Ficha Incidencia\frmEdicionLineaHistorial.resx">
       <DependentUpon>frmEdicionLineaHistorial.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmLineasPresupuesto.resx">
-      <DependentUpon>frmLineasPresupuesto.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\Incidencias\Ficha Incidencia\frmPresupuesto.resx">
+      <DependentUpon>frmPresupuesto.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmHistorialActuacion.resx">
+    <EmbeddedResource Include="Formularios\Incidencias\Ficha Incidencia\frmHistorialActuacion.resx">
       <DependentUpon>frmHistorialActuacion.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmDetallesIncidencia.resx">
+    <EmbeddedResource Include="Formularios\Incidencias\Ficha Incidencia\frmDetallesIncidencia.resx">
       <DependentUpon>frmDetallesIncidencia.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmIncidencia.resx">
-      <DependentUpon>frmIncidencia.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\Incidencias\Ficha Incidencia\frmFichaIncidencia.resx">
+      <DependentUpon>frmFichaIncidencia.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmMantenimiento.resx">
+    <EmbeddedResource Include="Formularios\Clientes\Ficha Cliente\frmMantenimiento.resx">
       <DependentUpon>frmMantenimiento.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmMantenimientos.resx">
-      <DependentUpon>frmMantenimientos.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\Mantenimientos\frmListadoMantenimientos.resx">
+      <DependentUpon>frmListadoMantenimientos.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmClientes.resx">
-      <DependentUpon>frmClientes.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\Clientes\frmListadoClientes.resx">
+      <DependentUpon>frmListadoClientes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmListadoIncidencias.resx">
+    <EmbeddedResource Include="Formularios\Incidencias\frmListadoIncidencias.resx">
       <DependentUpon>frmListadoIncidencias.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmNotificaciones.resx">
+    <EmbeddedResource Include="Formularios\Principal\frmNotificaciones.resx">
       <DependentUpon>frmNotificaciones.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -247,6 +261,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

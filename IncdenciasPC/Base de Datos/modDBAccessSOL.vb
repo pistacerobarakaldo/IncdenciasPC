@@ -25,10 +25,10 @@ Module modDBAccessSOL
         Dim blnCambioDB As Boolean
 
         Try
-            'If Not m_strDBPath.Equals(gv_objAplicacion.DBEmpresa) Then
-            '    m_strDBPath = gv_objAplicacion.DBEmpresa
-            '    blnCambioDB = True
-            'End If
+            If Not m_strDBPath.Equals(gv_strDBFactusol) Then
+                m_strDBPath = gv_strDBFactusol
+                blnCambioDB = True
+            End If
 
             m_strDBPath = "Z:\Datos\0022014.mdb"
 

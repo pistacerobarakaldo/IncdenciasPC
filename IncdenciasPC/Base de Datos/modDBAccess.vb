@@ -18,12 +18,8 @@ Module modDBAccess
     Public Const gc_strDBTemplatesPath As String = "\DBIT\"
 
     '<CABECERA>-----------------------------------------------
-    'Nombre...........: AbrirCerrarConexion
     'Descripcion......: Establece o cierra la conexion con la Base de Datos
     'Fecha............: 07/10/2011
-    'Autor............: Borja Escudero
-    'Parametros.......: N/A 
-    'Retorno..........: N/A
     '<FIN CABECERA>-------------------------------------------
     Private Sub AbrirConexion()
 
@@ -32,10 +28,10 @@ Module modDBAccess
         Dim blnCambioDB As Boolean
 
         Try
-            'If Not m_strDBPath.Equals(gv_objAplicacion.DBEmpresa) Then
-            '    m_strDBPath = gv_objAplicacion.DBEmpresa
-            '    blnCambioDB = True
-            'End If
+            If Not m_strDBPath.Equals(gv_strDBPrincipal) Then
+                m_strDBPath = gv_strDBPrincipal
+                blnCambioDB = True
+            End If
 
             m_strDBPath = "C:\Users\Borja\Google Drive\Programacion\Proyectos\IncdenciasPC\IncdenciasPC\bin\Debug\Incidencias.accdb"
 
