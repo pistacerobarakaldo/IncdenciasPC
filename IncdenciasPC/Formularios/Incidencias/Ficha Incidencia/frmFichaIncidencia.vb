@@ -210,10 +210,10 @@
             Select Case objBoton.Name
                 Case btnGuardar.Name
                     If frmDetallesIncidencia.GuardarIncidencia(objIncidencia) Then
-                        If m_objIncidencia.Estado >= 3 And objIncidencia.Resolucion = "" Then
+                        If objIncidencia.Estado >= 3 And objIncidencia.Resolucion = "" Then
                             MsgBox("El campo Resolucion no puede estar vacio si la incidencia se guarda como terminada, avisado, cerrada o En garantia", _
                                    MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Faltan datos")
-                        ElseIf m_objIncidencia.IdCliente = 0 Then
+                        ElseIf objIncidencia.IdCliente = 0 Then
                             MsgBox("Debe seleccionar un cliente o  crear uno nuevo", _
                                    MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Faltan datos")
                         Else
@@ -241,10 +241,10 @@
                     End If
                 Case btnGuardaryCerrar.Name
                     If frmDetallesIncidencia.GuardarIncidencia(objIncidencia) Then
-                        If m_objIncidencia.Estado >= 3 And objIncidencia.Resolucion = "" Then
+                        If objIncidencia.Estado >= 3 And objIncidencia.Resolucion = "" Then
                             MsgBox("El campo Resolucion no puede estar vacio si la incidencia se guarda como terminada, avisado, cerrada o En garantia", _
                                    MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Faltan datos")
-                        ElseIf m_objIncidencia.IdCliente = 0 Then
+                        ElseIf objIncidencia.IdCliente = 0 Then
                             MsgBox("Debe seleccionar un cliente o  crear uno nuevo", _
                                    MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Faltan datos")
                         Else
