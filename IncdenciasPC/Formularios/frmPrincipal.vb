@@ -1,4 +1,6 @@
-﻿Public Class frmPrincipal
+﻿Imports CrystalDecisions.CrystalReports.Engine
+
+Public Class frmPrincipal
     Const mc_strNombre_Modulo As String = "frmPrincipal"
 
     'Incidencia
@@ -16,14 +18,15 @@
 
         Try
             'CARGAR ARCHIVO DE CONFIGURACION
-
-            HabilitarBotones()
+            CargarConfiguracionINI()
+            EstablecerFiltrosEstados()
             frmListadoIncidencias.MdiParent = Me
             frmListadoIncidencias.Show()
             frmListadoIncidencias.WindowState = FormWindowState.Minimized
             frmListadoIncidencias.WindowState = FormWindowState.Maximized
             CargarFiltrosToolStripComboBox(cbxCamposI, frmListadoIncidencias.DataGridIncidencias)
             AplicarFiltro()
+            HabilitarBotones()
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
@@ -34,7 +37,48 @@
         Const strNombre_Funcion As String = "HabilitarBotones"
 
         Try
+            If frmListadoIncidencias.DataGridIncidencias.Rows.Count > 0 Then
+                frmListadoIncidencias.DataGridIncidencias.Rows(0).Selected = True
+                btnModificarI.Enabled = True
+                btnEliminar.Enabled = True
+                btnImprimir.Enabled = True
+            Else
+                btnModificarI.Enabled = False
+                btnEliminar.Enabled = False
+                btnImprimir.Enabled = False
+            End If
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
 
+    Private Sub EstablecerFiltrosEstados()
+
+        Const strNombre_Funcion As String = "EstablecerFiltrosEstados"
+
+        Try
+            chbAbierta.Checked = gv_blnAbierta
+            chbEnproceso.Checked = gv_blnEnproceso
+            chbTerminada.Checked = gv_blnTerminada
+            chbAvisado.Checked = gv_blnAvisado
+            chbCerrada.Checked = gv_blnCerrada
+            chbEngarantia.Checked = gv_blnEngarantia
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
+    Private Sub GuardarFiltrosEstados()
+
+        Const strNombre_Funcion As String = "GuardarFiltrosEstados"
+
+        Try
+            gv_blnAbierta = chbAbierta.Checked
+            gv_blnEnproceso = chbEnproceso.Checked
+            gv_blnTerminada = chbTerminada.Checked
+            gv_blnAvisado = chbAvisado.Checked
+            gv_blnCerrada = chbCerrada.Checked
+            gv_blnEngarantia = chbEngarantia.Checked
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
@@ -46,6 +90,7 @@
 
         Dim objBoton As ToolStripButton
         Dim blnResultado As Boolean
+        Dim lngIncidencia As Long
 
         Try
             objBoton = sender
@@ -63,10 +108,45 @@
                     End If
                     AplicarFiltro()
                 Case btnEliminar.Name
+                    lngIncidencia = frmListadoIncidencias.DataGridIncidencias.SelectedRows(0).Cells(gc_strLP_I_Incidencia).Value
+                    If MsgBox("¿Estas seguro de eliminar la incidencia " & lngIncidencia & "?" & vbCrLf & _
+                               "No se podrán volver a recuperar los datos asociados a esta incidencia", MsgBoxStyle.Question + MsgBoxStyle.OkCancel, "Eliminar incidencia") = MsgBoxResult.Ok Then
+                        If Not Inci_EliminarIncidencia(lngIncidencia) Then
+                            MsgBox("Ha ocurrido un error durante la eliminacion de la incidencia. Por favor, intentelo de nuevo", MsgBoxStyle.Critical, "Eliminar incidencia")
+                        End If
+                    End If
                     AplicarFiltro()
                 Case btnImprimir.Name
+                    lngIncidencia = frmListadoIncidencias.DataGridIncidencias.SelectedRows(0).Cells(gc_strLP_I_Incidencia).Value
+                    ImprimirIncidencia(lngIncidencia)
 
             End Select
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
+    '<CABECERA>-----------------------------------------------
+    'Descripcion......: Imprime el reporte de la incidencia
+    'Fecha............: 25/05/2014
+    '<FIN CABECERA>-------------------------------------------
+    Private Sub ImprimirIncidencia(ByVal lngIncidencia As Long)
+
+        Const strNombre_Funcion As String = "ImprimirIncidencia"
+
+        Dim objReporte As New ReportDocument
+        Dim lngCopias As Long
+
+        Try
+            frmImprimirIncidencia.ShowDialog()
+            lngCopias = frmImprimirIncidencia.Copias
+            If lngCopias > 0 Then
+                objReporte = New IncidenciaRPT
+                objReporte.SetParameterValue("IdIncidencia", lngIncidencia)
+                For intcont = 1 To lngCopias
+                    objReporte.PrintToPrinter(1, False, 1, 1)
+                Next
+            End If
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
@@ -79,6 +159,8 @@
         Dim objForm As Windows.Forms.Form
 
         Try
+            GuardarFiltrosEstados()
+            GuardarConfiguracionINI()
             For Each objForm In Me.MdiChildren
                 objForm.Close()
             Next
@@ -96,7 +178,7 @@
         Const strNombre_Funcion As String = "btnBuscar_Click"
 
         Try
-            AplicarFiltro
+            AplicarFiltro()
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
@@ -109,7 +191,7 @@
         Const strNombre_Funcion As String = "Estados_CheckedChanged"
 
         Try
-            AplicarFiltro
+            AplicarFiltro()
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
@@ -125,6 +207,7 @@
             strFiltro = Config_strGenerarFiltroDataGridView(txtFiltroI.Text, cbxCamposI.SelectedItem)
             GenerarFiltroEstados(strFiltro)
             frmListadoIncidencias.AplicarFiltro(strFiltro)
+            HabilitarBotones()
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try

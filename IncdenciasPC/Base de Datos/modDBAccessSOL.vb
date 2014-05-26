@@ -45,7 +45,7 @@ Module modDBAccessSOL
         End Try
     End Sub
 
-    Public ReadOnly Property ConexionDB As OleDbConnection
+    Public ReadOnly Property ConexionDBSOL As OleDbConnection
         Get
             Return m_cnxConexion
         End Get

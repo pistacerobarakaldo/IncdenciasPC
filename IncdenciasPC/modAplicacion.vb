@@ -31,6 +31,72 @@ Module modAplicacion
     Public gv_strDBPrincipal As String
     Public gv_strDBFactusol As String
 
+    'Impresoras
+    Public gv_strImpresoraIncidencias As String
+    Public gv_strImpresoraInformes As String
+
+    'Filtros de estados de las incidencias
+    Public gv_blnAbierta As Boolean
+    Public gv_blnEnproceso As Boolean
+    Public gv_blnTerminada As Boolean
+    Public gv_blnAvisado As Boolean
+    Public gv_blnCerrada As Boolean
+    Public gv_blnEngarantia As Boolean
+
+    '<CABECERA>-----------------------------------------------
+    'Descripcion......: Carga el archivo de configuracion INI
+    'Fecha............: 25/05/2014
+    '<FIN CABECERA>-------------------------------------------
+    Public Sub CargarConfiguracionINI()
+
+        Const strNombre_Funcion As String = "CargarConfiguracionINI"
+        
+        Try
+            'Rutas
+            gv_strDBPrincipal = LeerINI(gc_strINIS_DBPATH, gc_strINIK_DBPATH_Principal, "")
+            gv_strDBFactusol = LeerINI(gc_strINIS_DBPATH, gc_strINIK_DBPATH_Factusol, "")
+            'Impresoras
+            gv_strImpresoraIncidencias = LeerINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_Incidencias, "")
+            gv_strImpresoraInformes = LeerINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_Informes, "")
+            'Filtros
+            gv_blnAbierta = LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Abierta, True)
+            gv_blnEnproceso = LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Proceso, True)
+            gv_blnTerminada = LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Terminada, True)
+            gv_blnAvisado = LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Avisado, True)
+            gv_blnCerrada = LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Cerrada, True)
+            gv_blnEngarantia = LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Garantia, True)
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
+    '<CABECERA>-----------------------------------------------
+    'Descripcion......: Guarda el archivo de configuracion INI
+    'Fecha............: 25/05/2014
+    '<FIN CABECERA>-------------------------------------------
+    Public Sub GuardarConfiguracionINI()
+
+        Const strNombre_Funcion As String = "GuardarConfiguracionINI"
+
+        Try
+            'Rutas
+            EscribirINI(gc_strINIS_DBPATH, gc_strINIK_DBPATH_Principal, gv_strDBPrincipal)
+            EscribirINI(gc_strINIS_DBPATH, gc_strINIK_DBPATH_Factusol, gv_strDBFactusol)
+            'Impresoras
+            EscribirINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_Incidencias, gv_strImpresoraIncidencias)
+            EscribirINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_Informes, gv_strImpresoraInformes)
+            'Filtros
+            LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Abierta, gv_blnAbierta)
+            LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Proceso, gv_blnEnproceso)
+            LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Terminada, gv_blnTerminada)
+            LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Avisado, gv_blnAvisado)
+            LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Cerrada, gv_blnCerrada)
+            LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Garantia, gv_blnEngarantia)
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
     '<CABECERA>-----------------------------------------------
     'Descripcion......: Añade corchetes a ambos lados de la cadena pasada, esta funcion se utiliza
     '                   para crear los alias de la Base de Datos

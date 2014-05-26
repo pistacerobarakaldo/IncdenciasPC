@@ -243,6 +243,45 @@ Module modDBGIncidencias
         End Try
     End Function
 
+    '<CABECERA>-----------------------------------------------
+    'Descripcion......: Elimina una incidencia de la base de datos
+    'Fecha............: 25/05/2014
+    '<FIN CABECERA>-------------------------------------------
+    Public Function Inci_EliminarIncidencia(ByVal lngIncidencia As Long) As Boolean
+
+        Const strNombre_Funcion As String = "Inci_EliminarIncidencia"
+        Dim blnError As Boolean
+
+        Dim blnResultado As Boolean
+        Dim strQuery As String
+
+        Try
+            strQuery = Inci_strQueryEliminarIncidencia(lngIncidencia)
+            If blnEjecutarQuery(strQuery) Then
+                blnResultado = True
+                strQuery = Inci_strQueryEliminarLineasActuacion(lngIncidencia)
+                If blnEjecutarQuery(strQuery) Then
+                    strQuery = Inci_strQueryEliminarLineasPresupuesto(lngIncidencia)
+                    If Not blnEjecutarQuery(strQuery) Then
+                        blnResultado = False
+                    End If
+                Else
+                    blnResultado = False
+                End If
+            Else
+                blnResultado = False
+            End If
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+            blnError = True
+        Finally
+            If blnError Then
+                blnResultado = False
+            End If
+            Inci_EliminarIncidencia = blnResultado
+        End Try
+    End Function
+
     '    '<CABECERA>-----------------------------------------------
     '    'Nombre...........: FacClie_blnEditarFactura
     '    'Descripcion......: Editar un Factura de la base de datos
