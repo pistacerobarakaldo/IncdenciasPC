@@ -34,6 +34,7 @@ Module modAplicacion
     'Impresoras
     Public gv_strImpresoraIncidencias As String
     Public gv_strImpresoraInformes As String
+    Public gv_lngTipoImpresoIncidencia As Long
 
     'Filtros de estados de las incidencias
     Public gv_blnAbierta As Boolean
@@ -58,6 +59,8 @@ Module modAplicacion
             'Impresoras
             gv_strImpresoraIncidencias = LeerINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_Incidencias, "")
             gv_strImpresoraInformes = LeerINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_Informes, "")
+            gv_lngTipoImpresoIncidencia = LeerINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_TipoImpresoIncidencia, 0)
+
             'Filtros
             gv_blnAbierta = LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Abierta, True)
             gv_blnEnproceso = LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Proceso, True)
@@ -85,6 +88,7 @@ Module modAplicacion
             'Impresoras
             EscribirINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_Incidencias, gv_strImpresoraIncidencias)
             EscribirINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_Informes, gv_strImpresoraInformes)
+            LeerINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_TipoImpresoIncidencia, gv_lngTipoImpresoIncidencia)
             'Filtros
             LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Abierta, gv_blnAbierta)
             LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Proceso, gv_blnEnproceso)

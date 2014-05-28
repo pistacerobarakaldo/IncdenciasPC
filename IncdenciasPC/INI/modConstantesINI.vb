@@ -23,6 +23,7 @@ Module modConstantesINI
     '---------------------------------------------------------------------
     Public Const gc_strINIK_PRINTERS_Incidencias As String = "PRINTERS_Incidencias"
     Public Const gc_strINIK_PRINTERS_Informes As String = "PRINTERS_Informes"
+    Public Const gc_strINIK_PRINTERS_TipoImpresoIncidencia As String = "PRINTERS_TipoImpresoIncidencia"
     '#####################################################################
 
     '#####################################################################

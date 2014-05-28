@@ -24,8 +24,8 @@ Partial Class frmPrincipal
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPrincipal))
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.tbcPrincipal = New System.Windows.Forms.TabControl()
+        Me.tbpIncidencias = New System.Windows.Forms.TabPage()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.tspLin2 = New System.Windows.Forms.ToolStrip()
         Me.btnModificarI = New System.Windows.Forms.ToolStripButton()
@@ -52,7 +52,7 @@ Partial Class frmPrincipal
         Me.chbEnproceso = New System.Windows.Forms.CheckBox()
         Me.chbAbierta = New System.Windows.Forms.CheckBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.tbpClientes = New System.Windows.Forms.TabPage()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.ToolStrip4 = New System.Windows.Forms.ToolStrip()
         Me.btnBuscarC = New System.Windows.Forms.ToolStripButton()
@@ -64,15 +64,16 @@ Partial Class frmPrincipal
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.btnModificarC = New System.Windows.Forms.ToolStripButton()
-        Me.btnNuevo = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
+        Me.btnNuevo = New System.Windows.Forms.ToolStripButton()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.Panel1.SuspendLayout()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
+        Me.tbcPrincipal.SuspendLayout()
+        Me.tbpIncidencias.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.tspLin2.SuspendLayout()
         Me.tspLin1.SuspendLayout()
@@ -82,54 +83,54 @@ Partial Class frmPrincipal
         Me.Panel3.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.Panel5.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
+        Me.tbpClientes.SuspendLayout()
         Me.Panel9.SuspendLayout()
         Me.ToolStrip4.SuspendLayout()
         Me.ToolStrip5.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
-        Me.btnNuevo.SuspendLayout()
+        Me.ToolStrip2.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.Panel1.Controls.Add(Me.TabControl1)
+        Me.Panel1.Controls.Add(Me.tbcPrincipal)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(974, 124)
         Me.Panel1.TabIndex = 1
         '
-        'TabControl1
+        'tbcPrincipal
         '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.TabControl1.ItemSize = New System.Drawing.Size(150, 20)
-        Me.TabControl1.Location = New System.Drawing.Point(0, 0)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(974, 128)
-        Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
-        Me.TabControl1.TabIndex = 8
+        Me.tbcPrincipal.Controls.Add(Me.tbpIncidencias)
+        Me.tbcPrincipal.Controls.Add(Me.tbpClientes)
+        Me.tbcPrincipal.Dock = System.Windows.Forms.DockStyle.Top
+        Me.tbcPrincipal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbcPrincipal.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.tbcPrincipal.ItemSize = New System.Drawing.Size(150, 20)
+        Me.tbcPrincipal.Location = New System.Drawing.Point(0, 0)
+        Me.tbcPrincipal.Name = "tbcPrincipal"
+        Me.tbcPrincipal.SelectedIndex = 0
+        Me.tbcPrincipal.Size = New System.Drawing.Size(974, 128)
+        Me.tbcPrincipal.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
+        Me.tbcPrincipal.TabIndex = 8
         '
-        'TabPage1
+        'tbpIncidencias
         '
-        Me.TabPage1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.TabPage1.Controls.Add(Me.Panel6)
-        Me.TabPage1.Controls.Add(Me.Panel2)
-        Me.TabPage1.Controls.Add(Me.Panel3)
-        Me.TabPage1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabPage1.Location = New System.Drawing.Point(4, 24)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(966, 100)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Incidencias"
+        Me.tbpIncidencias.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.tbpIncidencias.Controls.Add(Me.Panel6)
+        Me.tbpIncidencias.Controls.Add(Me.Panel2)
+        Me.tbpIncidencias.Controls.Add(Me.Panel3)
+        Me.tbpIncidencias.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbpIncidencias.Location = New System.Drawing.Point(4, 24)
+        Me.tbpIncidencias.Name = "tbpIncidencias"
+        Me.tbpIncidencias.Padding = New System.Windows.Forms.Padding(3)
+        Me.tbpIncidencias.Size = New System.Drawing.Size(966, 100)
+        Me.tbpIncidencias.TabIndex = 0
+        Me.tbpIncidencias.Text = "Incidencias"
         '
         'Panel6
         '
@@ -430,17 +431,17 @@ Partial Class frmPrincipal
         Me.Label2.Text = "Estados"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'TabPage2
+        'tbpClientes
         '
-        Me.TabPage2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.TabPage2.Controls.Add(Me.Panel9)
-        Me.TabPage2.Controls.Add(Me.Panel4)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 24)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(966, 100)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Clientes"
+        Me.tbpClientes.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.tbpClientes.Controls.Add(Me.Panel9)
+        Me.tbpClientes.Controls.Add(Me.Panel4)
+        Me.tbpClientes.Location = New System.Drawing.Point(4, 24)
+        Me.tbpClientes.Name = "tbpClientes"
+        Me.tbpClientes.Padding = New System.Windows.Forms.Padding(3)
+        Me.tbpClientes.Size = New System.Drawing.Size(966, 100)
+        Me.tbpClientes.TabIndex = 1
+        Me.tbpClientes.Text = "Clientes"
         '
         'Panel9
         '
@@ -528,7 +529,7 @@ Partial Class frmPrincipal
         Me.Panel4.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel4.Controls.Add(Me.ToolStrip1)
-        Me.Panel4.Controls.Add(Me.btnNuevo)
+        Me.Panel4.Controls.Add(Me.ToolStrip2)
         Me.Panel4.Controls.Add(Me.Label3)
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
         Me.Panel4.Name = "Panel4"
@@ -563,29 +564,29 @@ Partial Class frmPrincipal
         Me.btnModificarC.Text = "Modificar"
         Me.btnModificarC.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'ToolStrip2
+        '
+        Me.ToolStrip2.BackColor = System.Drawing.Color.Transparent
+        Me.ToolStrip2.Dock = System.Windows.Forms.DockStyle.Left
+        Me.ToolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.ToolStrip2.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNuevo})
+        Me.ToolStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
+        Me.ToolStrip2.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip2.Name = "ToolStrip2"
+        Me.ToolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+        Me.ToolStrip2.Size = New System.Drawing.Size(49, 79)
+        Me.ToolStrip2.TabIndex = 2
+        Me.ToolStrip2.Text = "ToolStrip1"
+        '
         'btnNuevo
         '
-        Me.btnNuevo.BackColor = System.Drawing.Color.Transparent
-        Me.btnNuevo.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnNuevo.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.btnNuevo.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.btnNuevo.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton4})
-        Me.btnNuevo.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
-        Me.btnNuevo.Location = New System.Drawing.Point(0, 0)
+        Me.btnNuevo.Image = CType(resources.GetObject("btnNuevo.Image"), System.Drawing.Image)
+        Me.btnNuevo.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnNuevo.Name = "btnNuevo"
-        Me.btnNuevo.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.btnNuevo.Size = New System.Drawing.Size(49, 79)
-        Me.btnNuevo.TabIndex = 2
-        Me.btnNuevo.Text = "ToolStrip1"
-        '
-        'ToolStripButton4
-        '
-        Me.ToolStripButton4.Image = CType(resources.GetObject("ToolStripButton4.Image"), System.Drawing.Image)
-        Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton4.Name = "ToolStripButton4"
-        Me.ToolStripButton4.Size = New System.Drawing.Size(46, 76)
-        Me.ToolStripButton4.Text = "Nuevo"
-        Me.ToolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btnNuevo.Size = New System.Drawing.Size(46, 76)
+        Me.btnNuevo.Text = "Nuevo"
+        Me.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'Label3
         '
@@ -632,6 +633,10 @@ Partial Class frmPrincipal
         Me.Label5.Text = "Notificaciones"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
+        'PrintDialog1
+        '
+        Me.PrintDialog1.UseEXDialog = True
+        '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -649,8 +654,8 @@ Partial Class frmPrincipal
         Me.Text = "Gestion de incidencias y mantenimiento"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
+        Me.tbcPrincipal.ResumeLayout(False)
+        Me.tbpIncidencias.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
         Me.tspLin2.ResumeLayout(False)
@@ -668,7 +673,7 @@ Partial Class frmPrincipal
         Me.Panel8.PerformLayout()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
-        Me.TabPage2.ResumeLayout(False)
+        Me.tbpClientes.ResumeLayout(False)
         Me.Panel9.ResumeLayout(False)
         Me.Panel9.PerformLayout()
         Me.ToolStrip4.ResumeLayout(False)
@@ -679,8 +684,8 @@ Partial Class frmPrincipal
         Me.Panel4.PerformLayout()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
-        Me.btnNuevo.ResumeLayout(False)
-        Me.btnNuevo.PerformLayout()
+        Me.ToolStrip2.ResumeLayout(False)
+        Me.ToolStrip2.PerformLayout()
         Me.Panel7.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -700,9 +705,9 @@ Partial Class frmPrincipal
     Friend WithEvents tspLin1 As System.Windows.Forms.ToolStrip
     Friend WithEvents btnNueva As System.Windows.Forms.ToolStripButton
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
-    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
-    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
+    Friend WithEvents tbcPrincipal As System.Windows.Forms.TabControl
+    Friend WithEvents tbpIncidencias As System.Windows.Forms.TabPage
+    Friend WithEvents tbpClientes As System.Windows.Forms.TabPage
     Friend WithEvents Panel7 As System.Windows.Forms.Panel
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents btnImprimir As System.Windows.Forms.ToolStripButton
@@ -722,8 +727,8 @@ Partial Class frmPrincipal
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
     Friend WithEvents btnModificarC As System.Windows.Forms.ToolStripButton
-    Friend WithEvents btnNuevo As System.Windows.Forms.ToolStrip
-    Friend WithEvents ToolStripButton4 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStrip2 As System.Windows.Forms.ToolStrip
+    Friend WithEvents btnNuevo As System.Windows.Forms.ToolStripButton
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Panel9 As System.Windows.Forms.Panel
     Friend WithEvents ToolStrip4 As System.Windows.Forms.ToolStrip
@@ -733,4 +738,5 @@ Partial Class frmPrincipal
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cbxCamposC As System.Windows.Forms.ToolStripComboBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents PrintDialog1 As System.Windows.Forms.PrintDialog
 End Class

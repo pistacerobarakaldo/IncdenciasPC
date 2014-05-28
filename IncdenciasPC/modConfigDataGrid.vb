@@ -39,7 +39,7 @@ Module modConfigDataGrid
             objDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
             'Establecemos el color para las filas alternas
-            objDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(-33333)
+            objDataGridView.AlternatingRowsDefaultCellStyle.BackColor = SystemColors.GradientInactiveCaption
 
             'Establecemos la alineacion y el formato de las cabeceras
             objDataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter

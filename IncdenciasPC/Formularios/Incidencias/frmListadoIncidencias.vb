@@ -39,7 +39,7 @@
         End Try
     End Sub
 
-    Private Sub dgvIncidencias_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvIncidencias.CellDoubleClick
+    Private Sub dgvIncidencias_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
 
         Const strNombre_Funcion As String = "dgvFacturas_CellDoubleClick"
         Dim blnError As Boolean
@@ -69,10 +69,10 @@
         End Get
     End Property
 
-    Private Sub dgvIncidencias_RowStateChanged(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowStateChangedEventArgs) Handles dgvIncidencias.RowStateChanged
+    Private Sub dgvIncidencias_RowStateChanged(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowStateChangedEventArgs)
 
         Const strNombre_Funcion As String = "dgvIncidencias_RowStateChanged"
-        
+
         Try
             txtAveria.Text = dgvIncidencias.SelectedRows(0).Cells(gc_strLP_D_Averia).Value
         Catch ex As Exception

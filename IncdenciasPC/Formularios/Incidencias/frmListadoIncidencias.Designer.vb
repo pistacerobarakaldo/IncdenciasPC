@@ -26,11 +26,9 @@ Partial Class frmListadoIncidencias
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.dgvIncidencias = New System.Windows.Forms.DataGridView()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.Panel3.SuspendLayout()
         CType(Me.dgvIncidencias, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -77,15 +75,6 @@ Partial Class frmListadoIncidencias
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "Descripción de la incidencia"
         '
-        'Panel3
-        '
-        Me.Panel3.Controls.Add(Me.dgvIncidencias)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel3.Location = New System.Drawing.Point(0, 0)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1181, 469)
-        Me.Panel3.TabIndex = 4
-        '
         'dgvIncidencias
         '
         Me.dgvIncidencias.AllowUserToAddRows = False
@@ -97,7 +86,7 @@ Partial Class frmListadoIncidencias
         Me.dgvIncidencias.Name = "dgvIncidencias"
         Me.dgvIncidencias.ReadOnly = True
         Me.dgvIncidencias.Size = New System.Drawing.Size(1181, 469)
-        Me.dgvIncidencias.TabIndex = 1
+        Me.dgvIncidencias.TabIndex = 4
         '
         'frmListadoIncidencias
         '
@@ -105,7 +94,7 @@ Partial Class frmListadoIncidencias
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1181, 619)
-        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.dgvIncidencias)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "frmListadoIncidencias"
@@ -113,16 +102,14 @@ Partial Class frmListadoIncidencias
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
-        Me.Panel3.ResumeLayout(False)
         CType(Me.dgvIncidencias, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents txtAveria As System.Windows.Forms.RichTextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Panel3 As System.Windows.Forms.Panel
-    Friend WithEvents dgvIncidencias As System.Windows.Forms.DataGridView
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents dgvIncidencias As System.Windows.Forms.DataGridView
 
 End Class

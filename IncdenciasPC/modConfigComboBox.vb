@@ -127,6 +127,7 @@ Module modConfigComboBox
         Try
             'Vacio
             objItem = New clsElementoCombo
+            cbxFiltro.Items.Clear()
             cbxFiltro.Items.Add(objItem)
 
             intContador = 0

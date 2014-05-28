@@ -201,82 +201,76 @@
         Const strNombre_Funcion As String = "Mantenimiento_Click"
 
         Dim objBoton As ToolStripButton
-        Dim objIncidencia As New clsIncidencia
-        Dim lngEstado As Long
-        Dim strResolucion As String
 
         Try
             objBoton = sender
             Select Case objBoton.Name
                 Case btnGuardar.Name
-                    If frmDetallesIncidencia.GuardarIncidencia(objIncidencia) Then
-                        If objIncidencia.Estado >= 3 And objIncidencia.Resolucion = "" Then
-                            MsgBox("El campo Resolucion no puede estar vacio si la incidencia se guarda como terminada, avisado, cerrada o En garantia", _
-                                   MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Faltan datos")
-                        ElseIf objIncidencia.IdCliente = 0 Then
-                            MsgBox("Debe seleccionar un cliente o  crear uno nuevo", _
-                                   MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Faltan datos")
-                        Else
-                            lngEstado = m_objIncidencia.Estado
-                            strResolucion = m_objIncidencia.Resolucion
-                            If lngEstado <> objIncidencia.Estado Then
-                                'Crear evento de cambio de estado
-                                frmHistorialActuacion.NuevoEvento(objIncidencia.Estado, "La incidencia pasa al estado: " & ObtenerEstado(objIncidencia.Estado))
-                            End If
-                            If Not String.Equals(strResolucion, objIncidencia.Resolucion) Then
-                                'Crear evento de cambio de resolucion
-                                frmHistorialActuacion.NuevoEvento(objIncidencia.Estado, "La resolucion de la incidencia es: " & objIncidencia.Resolucion)
-                            End If
-                            objIncidencia.Historial = frmHistorialActuacion.GuardarHistorial()
-                            objIncidencia.Presupuesto = frmPresupuesto.GuardarPresupuesto()
-
-                            If Inci_GuardarIncidencia(objIncidencia) Then
-                                MsgBox("La incidencia ha sido cerrada", _
-                                   MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Salvado de datos")
-                            Else
-                                MsgBox("Error en el guardado de la incidencia", _
-                                   MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Salvado de datos")
-                            End If
-                        End If
-                    End If
+                    GuardarIncidencia(False)
                 Case btnGuardaryCerrar.Name
-                    If frmDetallesIncidencia.GuardarIncidencia(objIncidencia) Then
-                        If objIncidencia.Estado >= 3 And objIncidencia.Resolucion = "" Then
-                            MsgBox("El campo Resolucion no puede estar vacio si la incidencia se guarda como terminada, avisado, cerrada o En garantia", _
-                                   MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Faltan datos")
-                        ElseIf objIncidencia.IdCliente = 0 Then
-                            MsgBox("Debe seleccionar un cliente o  crear uno nuevo", _
-                                   MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Faltan datos")
-                        Else
-                            lngEstado = m_objIncidencia.Estado
-                            strResolucion = m_objIncidencia.Resolucion
-                            If lngEstado <> objIncidencia.Estado Then
-                                'Crear evento de cambio de estado
-                                frmHistorialActuacion.NuevoEvento(objIncidencia.Estado, "La incidencia pasa al estado: " & ObtenerEstado(objIncidencia.Estado))
-                            End If
-                            If Not String.Equals(strResolucion, objIncidencia.Resolucion) Then
-                                'Crear evento de cambio de resolucion
-                                frmHistorialActuacion.NuevoEvento(objIncidencia.Estado, "La resolucion de la incidencia es: " & objIncidencia.Resolucion)
-                            End If
-                            objIncidencia.Historial = frmHistorialActuacion.GuardarHistorial()
-                            objIncidencia.Presupuesto = frmPresupuesto.GuardarPresupuesto()
-
-                            If Inci_GuardarIncidencia(objIncidencia) Then
-                                MsgBox("La incidencia ha sido cerrada", _
-                                   MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Salvado de datos")
-                                frmDetallesIncidencia.Close()
-                                frmHistorialActuacion.Close()
-                                frmPresupuesto.Close()
-                                Me.Close()
-                            Else
-                                MsgBox("Error en el guardado de la incidencia", _
-                                   MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Salvado de datos")
-                            End If
-                        End If
-                    End If
+                    GuardarIncidencia(True)
                 Case btnImprimir.Name
                     'Imprimir la incidencia en la impresora de tickets
+                    If MsgBox("La incidencia debe guardarse antes de imprimir ¿Desea guardar la incidencia ahora?", _
+                           MsgBoxStyle.Question + MsgBoxStyle.OkCancel, "Faltan datos") = vbOK Then
+                        GuardarIncidencia(False)
+                        If frmImprimirIncidencia.CargarFormulario(m_objIncidencia.Id, gv_lngTipoImpresoIncidencia) Then
+                            frmImprimirIncidencia.ShowDialog()
+                        End If
+                    End If
             End Select
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
+    Private Sub GuardarIncidencia(ByVal blnCerrar As Boolean)
+
+        Const strNombre_Funcion As String = "GuardarIncidencia"
+
+        Dim objIncidencia As New clsIncidencia
+        Dim lngEstado As Long
+        Dim strResolucion As String
+
+        Try
+            If frmDetallesIncidencia.GuardarIncidencia(objIncidencia) Then
+                If objIncidencia.Estado >= 3 And objIncidencia.Resolucion = "" Then
+                    MsgBox("El campo Resolucion no puede estar vacio si la incidencia se guarda como terminada, avisado, cerrada o En garantia", _
+                           MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Faltan datos")
+                ElseIf objIncidencia.IdCliente = 0 Then
+                    MsgBox("Debe seleccionar un cliente o crear uno nuevo", _
+                           MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Faltan datos")
+                Else
+                    lngEstado = m_objIncidencia.Estado
+                    strResolucion = m_objIncidencia.Resolucion
+                    If lngEstado <> objIncidencia.Estado Then
+                        'Crear evento de cambio de estado
+                        frmHistorialActuacion.NuevoEvento(objIncidencia.Estado, "La incidencia pasa al estado: " & ObtenerEstado(objIncidencia.Estado))
+                    End If
+                    If Not String.Equals(strResolucion, objIncidencia.Resolucion) Then
+                        'Crear evento de cambio de resolucion
+                        frmHistorialActuacion.NuevoEvento(objIncidencia.Estado, "La resolucion de la incidencia es: " & objIncidencia.Resolucion)
+                    End If
+                    objIncidencia.Historial = frmHistorialActuacion.GuardarHistorial()
+                    objIncidencia.Presupuesto = frmPresupuesto.GuardarPresupuesto()
+
+                    If Inci_GuardarIncidencia(objIncidencia) Then
+                        m_objIncidencia = objIncidencia
+                        If blnCerrar Then
+                            frmDetallesIncidencia.Close()
+                            frmHistorialActuacion.Close()
+                            frmPresupuesto.Close()
+                            Me.Close()
+                        End If
+                    Else
+                        MsgBox("Error al guardar la incidencia", _
+                           MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Salvado de datos")
+                    End If
+                End If
+            Else
+                MsgBox("Error al recuperar los datos de la incidencia para su guardado", _
+                           MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Salvado de datos")
+            End If
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try

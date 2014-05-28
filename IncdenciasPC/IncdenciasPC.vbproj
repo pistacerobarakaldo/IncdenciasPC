@@ -130,10 +130,10 @@
     <Compile Include="Formularios\frmPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmImprimirIncidencia.Designer.vb">
+    <Compile Include="Formularios\Incidencias\frmImprimirIncidencia.Designer.vb">
       <DependentUpon>frmImprimirIncidencia.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmImprimirIncidencia.vb">
+    <Compile Include="Formularios\Incidencias\frmImprimirIncidencia.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="INI\modConstantesINI.vb" />
@@ -282,7 +282,7 @@
     <EmbeddedResource Include="Formularios\Principal\frmNotificaciones.resx">
       <DependentUpon>frmNotificaciones.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmImprimirIncidencia.resx">
+    <EmbeddedResource Include="Formularios\Incidencias\frmImprimirIncidencia.resx">
       <DependentUpon>frmImprimirIncidencia.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">

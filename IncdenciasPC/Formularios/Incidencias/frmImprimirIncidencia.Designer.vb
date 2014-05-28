@@ -24,12 +24,12 @@ Partial Class frmImprimirIncidencia
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmImprimirIncidencia))
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.nudCopias = New System.Windows.Forms.NumericUpDown()
+        Me.btnAceptar = New System.Windows.Forms.Button()
+        Me.btnCancelar = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudCopias, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -44,30 +44,30 @@ Partial Class frmImprimirIncidencia
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "¿Cuantas copias desea imprimir?"
         '
-        'NumericUpDown1
+        'nudCopias
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(316, 41)
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(38, 20)
-        Me.NumericUpDown1.TabIndex = 1
+        Me.nudCopias.Location = New System.Drawing.Point(316, 41)
+        Me.nudCopias.Name = "nudCopias"
+        Me.nudCopias.Size = New System.Drawing.Size(38, 20)
+        Me.nudCopias.TabIndex = 1
         '
-        'Button1
+        'btnAceptar
         '
-        Me.Button1.Location = New System.Drawing.Point(310, 15)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "Aceptar"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnAceptar.Location = New System.Drawing.Point(310, 15)
+        Me.btnAceptar.Name = "btnAceptar"
+        Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
+        Me.btnAceptar.TabIndex = 2
+        Me.btnAceptar.Text = "Aceptar"
+        Me.btnAceptar.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnCancelar
         '
-        Me.Button2.Location = New System.Drawing.Point(229, 15)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "Cancelar"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnCancelar.Location = New System.Drawing.Point(229, 15)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancelar.TabIndex = 3
+        Me.btnCancelar.Text = "Cancelar"
+        Me.btnCancelar.UseVisualStyleBackColor = True
         '
         'PictureBox1
         '
@@ -82,8 +82,8 @@ Partial Class frmImprimirIncidencia
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.Panel1.Controls.Add(Me.Button1)
-        Me.Panel1.Controls.Add(Me.Button2)
+        Me.Panel1.Controls.Add(Me.btnAceptar)
+        Me.Panel1.Controls.Add(Me.btnCancelar)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 98)
         Me.Panel1.Name = "Panel1"
@@ -98,7 +98,7 @@ Partial Class frmImprimirIncidencia
         Me.ClientSize = New System.Drawing.Size(397, 148)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.NumericUpDown1)
+        Me.Controls.Add(Me.nudCopias)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
@@ -106,7 +106,7 @@ Partial Class frmImprimirIncidencia
         Me.Name = "frmImprimirIncidencia"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Imprimir incidencia"
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudCopias, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -114,9 +114,9 @@ Partial Class frmImprimirIncidencia
 
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents NumericUpDown1 As System.Windows.Forms.NumericUpDown
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents nudCopias As System.Windows.Forms.NumericUpDown
+    Friend WithEvents btnAceptar As System.Windows.Forms.Button
+    Friend WithEvents btnCancelar As System.Windows.Forms.Button
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
 End Class
