@@ -136,6 +136,12 @@
     <Compile Include="Formularios\Incidencias\frmImprimirIncidencia.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Principal\frmCondiguracion.Designer.vb">
+      <DependentUpon>frmCondiguracion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Principal\frmCondiguracion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="INI\modConstantesINI.vb" />
     <Compile Include="modGestClientes.vb" />
     <Compile Include="Formularios\Incidencias\Ficha Incidencia\frmBusquedaClientes.Designer.vb">
@@ -278,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Incidencias\frmListadoIncidencias.resx">
       <DependentUpon>frmListadoIncidencias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Principal\frmCondiguracion.resx">
+      <DependentUpon>frmCondiguracion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Principal\frmNotificaciones.resx">
       <DependentUpon>frmNotificaciones.vb</DependentUpon>

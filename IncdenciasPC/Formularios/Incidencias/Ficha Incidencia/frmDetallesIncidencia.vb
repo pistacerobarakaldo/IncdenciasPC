@@ -102,11 +102,15 @@
             If objTextBox.Text <> "" Then
                 Select Case objTextBox.Name
                     Case txtTelefono1.Name
-                        lngNumero = CLng(txtTelefono1.Text)
-                        txtTelefono1.Text = Format(lngNumero, "### ### ###")
+                        If txtTelefono1.Text <> "" Then
+                            lngNumero = CLng(txtTelefono1.Text)
+                            txtTelefono1.Text = Format(lngNumero, "### ### ###")
+                        End If
                     Case txtTelefono2.Name
-                        lngNumero = CLng(txtTelefono2.Text)
-                        txtTelefono2.Text = Format(lngNumero, "### ### ###")
+                        If txtTelefono2.Text <> "" Then
+                            lngNumero = CLng(txtTelefono2.Text)
+                            txtTelefono2.Text = Format(lngNumero, "### ### ###")
+                        End If
                 End Select
             End If
         Catch ex As Exception
@@ -176,4 +180,5 @@
             m_dblPresupuesto = value
         End Set
     End Property
+
 End Class

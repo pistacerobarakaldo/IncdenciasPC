@@ -95,6 +95,7 @@ Partial Class frmFichaCliente
         '
         'btnHistorial
         '
+        Me.btnHistorial.Enabled = False
         Me.btnHistorial.Image = CType(resources.GetObject("btnHistorial.Image"), System.Drawing.Image)
         Me.btnHistorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnHistorial.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -105,6 +106,7 @@ Partial Class frmFichaCliente
         '
         'btnMantenimiento
         '
+        Me.btnMantenimiento.Enabled = False
         Me.btnMantenimiento.ForeColor = System.Drawing.SystemColors.ControlText
         Me.btnMantenimiento.Image = CType(resources.GetObject("btnMantenimiento.Image"), System.Drawing.Image)
         Me.btnMantenimiento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -203,6 +205,7 @@ Partial Class frmFichaCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(870, 521)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)

@@ -100,21 +100,34 @@
             If objTextBox.Text <> "" Then
                 Select Case objTextBox.Name
                     Case txtTelefono.Name
-                        If blnSoloNumeros(txtTelefono.Text) Then
+                        If txtTelefono.Text <> "" Then
                             lngNumero = CLng(txtTelefono.Text)
                             txtTelefono.Text = Format(lngNumero, "### ### ###")
                         End If
                     Case txtMovil.Name
-                        If blnSoloNumeros(txtMovil.Text) Then
+                        If txtMovil.Text <> "" Then
                             lngNumero = CLng(txtMovil.Text)
                             txtMovil.Text = Format(lngNumero, "### ### ###")
                         End If
                     Case txtFax.Name
-                        If blnSoloNumeros(txtFax.Text) Then
+                        If txtFax.Text <> "" Then
                             lngNumero = CLng(txtFax.Text)
                             txtFax.Text = Format(lngNumero, "### ### ###")
                         End If
                 End Select
+            End If
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
+    Private Sub txtNombreFiscal_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtNombreFiscal.Validated
+
+        Const strNombre_Funcion As String = "txtNombreFiscal_Validated"
+
+        Try
+            If txtNombreComercial.Text = "" Then
+                txtNombreComercial.Text = txtNombreFiscal.Text
             End If
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
@@ -150,4 +163,6 @@
             GuardarCliente = Not blnError
         End Try
     End Function
+
+    
 End Class

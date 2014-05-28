@@ -25,7 +25,7 @@ Module modAplicacion
     'Constante que determina de que base de datos se obtendran los datos de los clientes
     '   True = Los tados se obtendran de la base de datos de incidencias
     '   False = Los datos se obtendran de la base de datos de FactuSOL
-    Public Const gc_blnDBLocal As Boolean = False
+    Public gv_blnDBLocal As Boolean
 
     'Variables globales en las que se guarda la ubicacion de la base de datos principal y de Factusol que se estan utilizando
     Public gv_strDBPrincipal As String
@@ -56,6 +56,8 @@ Module modAplicacion
             'Rutas
             gv_strDBPrincipal = LeerINI(gc_strINIS_DBPATH, gc_strINIK_DBPATH_Principal, "")
             gv_strDBFactusol = LeerINI(gc_strINIS_DBPATH, gc_strINIK_DBPATH_Factusol, "")
+            gv_blnDBLocal = LeerINI(gc_strINIS_DBPATH, gc_strINIK_DBPATH_Local, False)
+
             'Impresoras
             gv_strImpresoraIncidencias = LeerINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_Incidencias, "")
             gv_strImpresoraInformes = LeerINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_Informes, "")
@@ -85,17 +87,18 @@ Module modAplicacion
             'Rutas
             EscribirINI(gc_strINIS_DBPATH, gc_strINIK_DBPATH_Principal, gv_strDBPrincipal)
             EscribirINI(gc_strINIS_DBPATH, gc_strINIK_DBPATH_Factusol, gv_strDBFactusol)
+            EscribirINI(gc_strINIS_DBPATH, gc_strINIK_DBPATH_Local, gv_blnDBLocal)
             'Impresoras
             EscribirINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_Incidencias, gv_strImpresoraIncidencias)
             EscribirINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_Informes, gv_strImpresoraInformes)
-            LeerINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_TipoImpresoIncidencia, gv_lngTipoImpresoIncidencia)
+            EscribirINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_TipoImpresoIncidencia, gv_lngTipoImpresoIncidencia)
             'Filtros
-            LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Abierta, gv_blnAbierta)
-            LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Proceso, gv_blnEnproceso)
-            LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Terminada, gv_blnTerminada)
-            LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Avisado, gv_blnAvisado)
-            LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Cerrada, gv_blnCerrada)
-            LeerINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Garantia, gv_blnEngarantia)
+            EscribirINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Abierta, gv_blnAbierta)
+            EscribirINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Proceso, gv_blnEnproceso)
+            EscribirINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Terminada, gv_blnTerminada)
+            EscribirINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Avisado, gv_blnAvisado)
+            EscribirINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Cerrada, gv_blnCerrada)
+            EscribirINI(gc_strINIS_FILTERS, gc_strINIK_FILTERS_Garantia, gv_blnEngarantia)
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
@@ -238,6 +241,70 @@ Module modAplicacion
                 blnResultado = False
             End If
             blnSoloNumeros = blnResultado
+        End Try
+    End Function
+
+    '<CABECERA>-----------------------------------------------
+    'Descripcion......: Quita el path y devuelve el nombre del fichero
+    'Fecha............: 15/11/2011
+    '<FIN CABECERA>-------------------------------------------
+    Public Function strQuitarPath(ByVal strPath As String) As String
+
+        Const strNombre_Funcion As String = "strQuitarPath"
+        Dim blnError As Boolean
+        
+        Dim strResultado As String = ""
+        Dim intPosi As Integer
+        Dim intPosf As Integer
+
+        Try
+            intPosf = 0
+            Do
+                intPosi = intPosf + 1
+                intPosf = InStr(intPosi, strPath, "\")
+            Loop While intPosf <> 0
+
+            If intPosi = 1 Then
+                strResultado = strPath
+            Else
+                strResultado = Right$(strPath, Len(strPath) - intPosi + 1)
+            End If
+        Catch ex As Exception
+            blnError = True
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        Finally
+            If blnError Then
+                strResultado = ""
+            End If
+            strQuitarPath = strResultado
+        End Try
+    End Function
+
+    '<CABECERA>-----------------------------------------------
+    'Descripcion......: Quita el nombre del fichero, devolviendo sólo el path
+    'Fecha............: 15/11/2011
+    '<FIN CABECERA>-------------------------------------------
+    Function strQuitarFichero(ByVal strPath As String, Optional ByVal blnSinBarra As Boolean = False) As String
+
+        Const strNombre_Funcion As String = "strQuitarFichero"
+        Dim blnError As Boolean
+
+        Dim strResultado As String = ""
+
+        Try
+            If blnSinBarra Then
+                strResultado = Left$(strPath, Len(strPath) - (Len(strQuitarPath(strPath)) + 1))
+            Else
+                strResultado = Left$(strPath, Len(strPath) - Len(strQuitarPath(strPath)))
+            End If
+        Catch ex As Exception
+            blnError = True
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        Finally
+            If blnError Then
+                strResultado = ""
+            End If
+            strQuitarFichero = strResultado
         End Try
     End Function
 End Module

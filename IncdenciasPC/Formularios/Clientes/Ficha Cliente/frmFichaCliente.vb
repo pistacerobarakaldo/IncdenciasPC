@@ -47,85 +47,73 @@
         End Try
     End Sub
 
-    Private Sub btnDetalles_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub btnDetalles_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDetalles.Click
 
         Const strNombre_Funcion As String = "btnDetalles_Click"
 
         Try
-            If btnDetalles.Checked = False Then
-                If frmHistorialIncidenciasCliente.Visible Then
-                    frmHistorialIncidenciasCliente.Hide()
-                    btnHistorial.Checked = False
-                End If
-                If frmMantenimiento.Visible Then
-                    frmMantenimiento.Hide()
-                    btnMantenimiento.Checked = False
-                End If
-                frmDetallesIncidencia.MdiParent = Me
-                frmDetallesIncidencia.Show()
-                frmDetallesIncidencia.WindowState = FormWindowState.Minimized
-                frmDetallesIncidencia.WindowState = FormWindowState.Maximized
-
-                btnDetalles.Checked = True
+           If Not frmDetallesCliente.IsMdiChild Then
+                frmDetallesCliente.MdiParent = Me
+                frmDetallesCliente.Show()
+                frmDetallesCliente.WindowState = FormWindowState.Minimized
+                frmDetallesCliente.WindowState = FormWindowState.Maximized
+            Else
+                frmDetallesCliente.BringToFront()
+                frmDetallesCliente.WindowState = FormWindowState.Maximized
             End If
+            btnDetalles.Checked = True
+            btnHistorial.Checked = False
+            btnMantenimiento.Checked = False
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
     End Sub
 
-    Private Sub btnHistorial_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub btnHistorial_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHistorial.Click
 
         Const strNombre_Funcion As String = "btnHistorial_Click"
 
         Try
-            If btnHistorial.Checked = False Then
-                If frmDetallesCliente.Visible Then
-                    frmDetallesCliente.Hide()
-                    btnDetalles.Checked = False
-                End If
-                If frmMantenimiento.Visible Then
-                    frmMantenimiento.Hide()
-                    btnMantenimiento.Checked = False
-                End If
+            If Not frmHistorialIncidenciasCliente.IsMdiChild Then
                 frmHistorialIncidenciasCliente.MdiParent = Me
                 frmHistorialIncidenciasCliente.Show()
                 frmHistorialIncidenciasCliente.WindowState = FormWindowState.Minimized
                 frmHistorialIncidenciasCliente.WindowState = FormWindowState.Maximized
-
-                btnHistorial.Checked = True
+            Else
+                frmHistorialIncidenciasCliente.BringToFront()
+                frmHistorialIncidenciasCliente.WindowState = FormWindowState.Maximized
             End If
+            btnDetalles.Checked = False
+            btnHistorial.Checked = True
+            btnMantenimiento.Checked = False
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
     End Sub
 
-    Private Sub btnMantenimiento_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub btnMantenimiento_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMantenimiento.Click
 
-        Const strNombre_Funcion As String = "btnMantenimiento_Click"
+        Const strNombre_Funcion As String = "btnHistorial_Click"
 
         Try
-            If btnMantenimiento.Checked = False Then
-                If frmDetallesCliente.Visible Then
-                    frmDetallesCliente.Hide()
-                    btnDetalles.Checked = False
-                End If
-                If frmHistorialIncidenciasCliente.Visible Then
-                    frmHistorialIncidenciasCliente.Hide()
-                    btnHistorial.Checked = False
-                End If
+            If Not frmMantenimiento.IsMdiChild Then
                 frmMantenimiento.MdiParent = Me
                 frmMantenimiento.Show()
                 frmMantenimiento.WindowState = FormWindowState.Minimized
                 frmMantenimiento.WindowState = FormWindowState.Maximized
-
-                btnMantenimiento.Checked = True
+            Else
+                frmMantenimiento.BringToFront()
+                frmMantenimiento.WindowState = FormWindowState.Maximized
             End If
+            btnDetalles.Checked = False
+            btnHistorial.Checked = False
+            btnMantenimiento.Checked = True
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
     End Sub
 
-    Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
 
         Const strNombre_Funcion As String = "Mantenimiento_Click"
 
@@ -174,4 +162,8 @@
             Return m_objCliente
         End Get
     End Property
+
+    
+    
+    
 End Class

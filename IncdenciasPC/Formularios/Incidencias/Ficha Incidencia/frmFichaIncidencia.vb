@@ -206,14 +206,14 @@
             objBoton = sender
             Select Case objBoton.Name
                 Case btnGuardar.Name
-                    GuardarIncidencia(False)
+                    GuardarIncidencia(False, False)
                 Case btnGuardaryCerrar.Name
-                    GuardarIncidencia(True)
+                    GuardarIncidencia(True, False)
                 Case btnImprimir.Name
                     'Imprimir la incidencia en la impresora de tickets
                     If MsgBox("La incidencia debe guardarse antes de imprimir ¿Desea guardar la incidencia ahora?", _
                            MsgBoxStyle.Question + MsgBoxStyle.OkCancel, "Faltan datos") = vbOK Then
-                        GuardarIncidencia(False)
+                        GuardarIncidencia(False, True)
                         If frmImprimirIncidencia.CargarFormulario(m_objIncidencia.Id, gv_lngTipoImpresoIncidencia) Then
                             frmImprimirIncidencia.ShowDialog()
                         End If
@@ -224,7 +224,7 @@
         End Try
     End Sub
 
-    Private Sub GuardarIncidencia(ByVal blnCerrar As Boolean)
+    Private Sub GuardarIncidencia(ByVal blnCerrar As Boolean, ByVal blnDesdeImprimir As Boolean)
 
         Const strNombre_Funcion As String = "GuardarIncidencia"
 
@@ -256,6 +256,10 @@
 
                     If Inci_GuardarIncidencia(objIncidencia) Then
                         m_objIncidencia = objIncidencia
+                        If Not blnDesdeImprimir Then
+                            MsgBox("Se ha guardado la incidencia", _
+                           MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Salvado de datos")
+                        End If
                         If blnCerrar Then
                             frmDetallesIncidencia.Close()
                             frmHistorialActuacion.Close()

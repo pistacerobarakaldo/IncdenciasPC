@@ -40,7 +40,45 @@
         End Try
     End Sub
 
-    Private Sub dgvClientes_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvClientes.CellDoubleClick
+    '<CABECERA>-----------------------------------------------
+    'Descripcion..: Actualiza los datos del DataGridView y aplica el filtro a los resultados 
+    'Fecha........: 28/05/2014
+    '<FIN CABECERA>-------------------------------------------
+    Public Sub Actualizar(ByVal strFiltro As String)
+
+        Const strNombre_Funcion As String = "Actualizar"
+        Dim blnError As Boolean
+
+        Dim objView As DataView
+
+        Try
+            CargarClientes(dgvClientes, udtTipoDeCarga.CargarAjustar)
+            objView = dgvClientes.DataSource
+            objView.RowFilter = strFiltro
+        Catch ex As Exception
+            blnError = True
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
+    '<CABECERA>-----------------------------------------------
+    'Descripcion..: Actualiza los datos del DataGridView y aplica el filtro a los resultados 
+    'Fecha........: 28/05/2014
+    '<FIN CABECERA>-------------------------------------------
+    Public Sub Ajustar()
+
+        Const strNombre_Funcion As String = "Ajustar"
+        Dim blnError As Boolean
+
+        Try
+            CargarClientes(dgvClientes, udtTipoDeCarga.SoloAjustar)
+        Catch ex As Exception
+            blnError = True
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
+    Public Sub dgvClientes_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvClientes.CellDoubleClick
 
         Const strNombre_Funcion As String = "dgvClientes_CellDoubleClick"
         Dim blnError As Boolean
@@ -53,6 +91,7 @@
             blnResultado = frmFichaCliente.blnCargarCliente(objCliente)
             If blnResultado Then
                 frmFichaCliente.ShowDialog()
+                Actualizar(frmPrincipal.FiltroClientes)
             End If
         Catch ex As Exception
             blnError = True

@@ -20,7 +20,7 @@ Module modDBGClientes
 
         Try
             strQuery = Clie_strQueryObtenerClientes(lngIdCliente, strWhere)
-            If gc_blnDBLocal Then
+            If gv_blnDBLocal Then
                 dtsDataSet = dtsObtenerDataSet(strQuery)
             Else
                 dtsDataSet = dtsObtenerDataSetSOL(strQuery)
@@ -61,7 +61,7 @@ Module modDBGClientes
             Else
                 'Crear una nueva incidencia
                 strQuery = Config_strQueryIndiceMaximo(gc_strDB_TABLA_Clientes, gc_strDB_I_Cliente)
-                If gc_blnDBLocal Then
+                If gv_blnDBLocal Then
                     dttTabla = dtsObtenerDataSet(strQuery).Tables(0)
                 Else
                     dttTabla = dtsObtenerDataSetSOL(strQuery).Tables(0)
@@ -71,7 +71,7 @@ Module modDBGClientes
                 strQuery = Clie_strQueryNuevoCliente(objCliente)
             End If
 
-            If gc_blnDBLocal Then
+            If gv_blnDBLocal Then
                 blnResultado = blnEjecutarQuery(strQuery)
             Else
                 blnResultado = blnEjecutarQuerySOL(strQuery)

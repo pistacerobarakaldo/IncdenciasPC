@@ -4,7 +4,7 @@
 
     End Sub
 
-    Private Sub btnNuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevo.Click
+    Private Sub btnNuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         'frmNotificaciones.Show()
         frmFichaIncidencia.Show()
     End Sub

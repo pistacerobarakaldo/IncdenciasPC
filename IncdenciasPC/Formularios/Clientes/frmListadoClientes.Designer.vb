@@ -49,6 +49,7 @@ Partial Class frmListadoClientes
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "frmListadoClientes"
         Me.Text = "Clientes"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

@@ -13,6 +13,20 @@ Public Class frmPrincipal
         Const strNombre_Funcion As String = "frmIncidencia_Load"
 
         Try
+            CargarAplicacion()
+            frmListadoIncidencias.WindowState = FormWindowState.Minimized
+            frmListadoIncidencias.WindowState = FormWindowState.Maximized
+            frmListadoIncidencias.Ajustar()
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
+    Private Sub CargarAplicacion()
+
+        Const strNombre_Funcion As String = "CargarAplicacion"
+
+        Try
             'CARGAR ARCHIVO DE CONFIGURACION
             CargarConfiguracionINI()
             EstablecerFiltrosEstados()
@@ -29,21 +43,18 @@ Public Class frmPrincipal
         Try
             frmListadoClientes.MdiParent = Me
             frmListadoClientes.Show()
-            frmListadoClientes.WindowState = FormWindowState.Minimized
-            frmListadoClientes.WindowState = FormWindowState.Maximized
             CargarFiltrosToolStripComboBox(cbxCamposC, frmListadoClientes.DataGridClientes)
-            AplicarFiltroClientes()
+            frmListadoClientes.Ajustar()
 
             frmListadoIncidencias.MdiParent = Me
             frmListadoIncidencias.Show()
-            frmListadoIncidencias.WindowState = FormWindowState.Minimized
-            frmListadoIncidencias.WindowState = FormWindowState.Maximized
             CargarFiltrosToolStripComboBox(cbxCamposI, frmListadoIncidencias.DataGridIncidencias)
-            AplicarFiltroIncidencias()
+            frmListadoIncidencias.Ajustar()
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
     End Sub
+
     Private Sub HabilitarBotonesIncidencias()
 
         Const strNombre_Funcion As String = "HabilitarBotonesIncidencias"
@@ -112,7 +123,7 @@ Public Class frmPrincipal
         End Try
     End Sub
 
-    Private Sub Incidencias_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNueva.Click, btnModificarI.Click, btnEliminar.Click, btnImprimir.Click, btnBuscarIncidencia.Click
+    Private Sub Incidencias_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNueva.Click, btnModificarI.Click, btnEliminar.Click, btnImprimir.Click, btnBuscarIncidencia.Click, btnActualizarI.Click
 
         Const strNombre_Funcion As String = "Incidencias_Click"
 
@@ -128,13 +139,13 @@ Public Class frmPrincipal
                     If blnResultado Then
                         frmFichaIncidencia.ShowDialog()
                     End If
-                    AplicarFiltroIncidencias()
+                    ActualizarIncidencias()
                 Case btnModificarI.Name
                     blnResultado = frmFichaIncidencia.blnCargarIncidencia(frmListadoIncidencias.LineaSeleccionada)
                     If blnResultado Then
                         frmFichaIncidencia.ShowDialog()
                     End If
-                    AplicarFiltroIncidencias()
+                    ActualizarIncidencias()
                 Case btnEliminar.Name
                     lngIncidencia = frmListadoIncidencias.DataGridIncidencias.SelectedRows(0).Cells(gc_strLP_I_Incidencia).Value
                     If MsgBox("¿Estas seguro de eliminar la incidencia " & lngIncidencia & "?" & vbCrLf & _
@@ -143,7 +154,7 @@ Public Class frmPrincipal
                             MsgBox("Ha ocurrido un error durante la eliminacion de la incidencia. Por favor, intentelo de nuevo", MsgBoxStyle.Critical, "Eliminar incidencia")
                         End If
                     End If
-                    AplicarFiltroIncidencias()
+                    ActualizarIncidencias()
                 Case btnImprimir.Name
                     lngIncidencia = frmListadoIncidencias.DataGridIncidencias.SelectedRows(0).Cells(gc_strLP_I_Incidencia).Value
                     If frmImprimirIncidencia.CargarFormulario(lngIncidencia, gv_lngTipoImpresoIncidencia) Then
@@ -151,13 +162,15 @@ Public Class frmPrincipal
                     End If
                 Case btnBuscarIncidencia.Name
                     AplicarFiltroIncidencias()
+                Case btnActualizarI.Name
+                    ActualizarIncidencias()
             End Select
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
     End Sub
 
-    Private Sub Clientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevo.Click, btnModificarC.Click, btnBuscarC.Click
+    Private Sub Clientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevo.Click, btnModificarC.Click, btnBuscarC.Click, btnActualizarC.Click
 
         Const strNombre_Funcion As String = "Clientes_Click"
 
@@ -168,20 +181,24 @@ Public Class frmPrincipal
         Try
             objBoton = sender
             Select Case objBoton.Name
-                Case btnNueva.Name
+                Case btnNuevo.Name
                     objCliente = New clsCliente
                     blnResultado = frmFichaCliente.blnCargarCliente(objCliente)
                     If blnResultado Then
                         frmFichaCliente.ShowDialog()
                     End If
-                    AplicarFiltroClientes()
-                Case btnModificarI.Name
-                    objCliente = New clsCliente(frmListadoIncidencias.LineaSeleccionada)
+                    ActualizarClientes()
+                Case btnModificarC.Name
+                    objCliente = New clsCliente(frmListadoClientes.LineaSeleccionada)
                     blnResultado = frmFichaCliente.blnCargarCliente(objCliente)
                     If blnResultado Then
                         frmFichaCliente.ShowDialog()
                     End If
+                    ActualizarClientes()
+                Case btnBuscarC.Name
                     AplicarFiltroClientes()
+                Case btnActualizarC.Name
+                    ActualizarClientes()
             End Select
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
@@ -203,7 +220,7 @@ Public Class frmPrincipal
 
     Private Sub AplicarFiltroIncidencias()
 
-        Const strNombre_Funcion As String = "AplicarFiltro"
+        Const strNombre_Funcion As String = "AplicarFiltroIncidencias"
 
         Dim strFiltro As String
 
@@ -316,9 +333,57 @@ Public Class frmPrincipal
             Select Case tbcPrincipal.SelectedTab.Name
                 Case tbpIncidencias.Name
                     frmListadoIncidencias.BringToFront()
+                    frmListadoIncidencias.Ajustar()
                 Case tbpClientes.Name
                     frmListadoClientes.BringToFront()
+                    frmListadoClientes.Ajustar()
             End Select
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
+    Private Sub ActualizarClientes()
+
+        Const strNombre_Funcion As String = "ActualizarClientes"
+
+        Dim strFiltro As String
+
+        Try
+            strFiltro = Config_strGenerarFiltroDataGridView(txtFiltroC.Text, cbxCamposC.SelectedItem)
+            frmListadoClientes.Actualizar(strFiltro)
+            HabilitarBotonesClientes()
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
+    Private Sub ActualizarIncidencias()
+
+        Const strNombre_Funcion As String = "ActualizarIncidencias"
+
+        Dim strFiltro As String
+
+        Try
+            strFiltro = Config_strGenerarFiltroDataGridView(txtFiltroI.Text, cbxCamposI.SelectedItem)
+            GenerarFiltroEstados(strFiltro)
+            frmListadoIncidencias.Actualizar(strFiltro)
+            HabilitarBotonesIncidencias()
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
+    Private Sub btnConfigC_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConfigC.Click, btnConfigI.Click
+
+        Const strNombre_Funcion As String = "btnConfigC_Click"
+
+        Try
+            frmCondiguracion.ShowDialog()
+            If frmCondiguracion.Guardado Then
+                CerrarAplicacion()
+                CargarAplicacion()
+            End If
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
@@ -327,6 +392,17 @@ Public Class frmPrincipal
     Private Sub frmPrincipal_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
 
         Const strNombre_Funcion As String = "frmPrincipal_FormClosing"
+
+        Try
+            CerrarAplicacion
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
+    Private Sub CerrarAplicacion()
+
+        Const strNombre_Funcion As String = "CerrarAplicacion"
 
         Dim objForm As Windows.Forms.Form
 
@@ -344,4 +420,16 @@ Public Class frmPrincipal
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
     End Sub
+
+    Public ReadOnly Property FiltroClientes As String
+        Get
+            Return Config_strGenerarFiltroDataGridView(txtFiltroC.Text, cbxCamposC.SelectedItem)
+        End Get
+    End Property
+
+    Public ReadOnly Property FiltroIncidencias As String
+        Get
+            Return Config_strGenerarFiltroDataGridView(txtFiltroI.Text, cbxCamposI.SelectedItem)
+        End Get
+    End Property
 End Class

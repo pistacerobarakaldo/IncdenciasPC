@@ -39,6 +39,44 @@
         End Try
     End Sub
 
+    '<CABECERA>-----------------------------------------------
+    'Descripcion..: Actualiza los datos del DataGridView y aplica el filtro a los resultados 
+    'Fecha........: 28/05/2014
+    '<FIN CABECERA>-------------------------------------------
+    Public Sub Actualizar(ByVal strFiltro As String)
+
+        Const strNombre_Funcion As String = "Actualizar"
+        Dim blnError As Boolean
+
+        Dim objView As DataView
+
+        Try
+            CargarIncidencias(dgvIncidencias, udtTipoDeCarga.CargarAjustar)
+            objView = dgvIncidencias.DataSource
+            objView.RowFilter = strFiltro
+        Catch ex As Exception
+            blnError = True
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
+    '<CABECERA>-----------------------------------------------
+    'Descripcion..: Actualiza los datos del DataGridView y aplica el filtro a los resultados 
+    'Fecha........: 28/05/2014
+    '<FIN CABECERA>-------------------------------------------
+    Public Sub Ajustar()
+
+        Const strNombre_Funcion As String = "Ajustar"
+        Dim blnError As Boolean
+
+        Try
+            CargarIncidencias(dgvIncidencias, udtTipoDeCarga.SoloAjustar)
+        Catch ex As Exception
+            blnError = True
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
     Private Sub dgvIncidencias_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
 
         Const strNombre_Funcion As String = "dgvFacturas_CellDoubleClick"
@@ -50,6 +88,7 @@
             blnResultado = frmFichaIncidencia.blnCargarIncidencia(dgvIncidencias.SelectedRows(0))
             If blnResultado Then
                 frmFichaIncidencia.ShowDialog()
+                Actualizar(frmPrincipal.FiltroIncidencias)
             End If
         Catch ex As Exception
             blnError = True
@@ -79,4 +118,5 @@
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
     End Sub
+
 End Class

@@ -91,7 +91,7 @@ TratarError:
             'Establecemos un ancho predefinido para cada columna
             objDataGridView.Columns(gc_strLP_I_Cliente).Width = dblAnchoDisponible * 0.07
             dblSumaTotal = dblSumaTotal + objDataGridView.Columns(gc_strLP_I_Cliente).Width
-            objDataGridView.Columns(gc_strLP_D_NIFCliente).Width = dblAnchoDisponible * 0.07
+            objDataGridView.Columns(gc_strLP_D_NIFCliente).Width = dblAnchoDisponible * 0.068
             dblSumaTotal = dblSumaTotal + objDataGridView.Columns(gc_strLP_D_NIFCliente).Width
             objDataGridView.Columns(gc_strLP_D_NomFiscal).Width = dblAnchoDisponible * 0.18
             dblSumaTotal = dblSumaTotal + objDataGridView.Columns(gc_strLP_D_NomFiscal).Width

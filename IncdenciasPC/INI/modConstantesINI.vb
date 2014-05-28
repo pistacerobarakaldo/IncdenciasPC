@@ -13,6 +13,7 @@ Module modConstantesINI
     'DBPATH
     Public Const gc_strINIS_DBPATH As String = "DBPATH"
     '---------------------------------------------------------------------
+    Public Const gc_strINIK_DBPATH_Local As String = "DBPATH_Local"
     Public Const gc_strINIK_DBPATH_Principal As String = "DBPATH_Principal"
     Public Const gc_strINIK_DBPATH_Factusol As String = "DBPATH_Factusol"
     '#####################################################################
