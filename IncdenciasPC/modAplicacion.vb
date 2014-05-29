@@ -45,6 +45,107 @@ Module modAplicacion
     Public gv_blnEngarantia As Boolean
 
     '<CABECERA>-----------------------------------------------
+    'Descripcion......: Comprueba que los datos de la aplicacion sean correctos
+    'Fecha............: 29/05/2014
+    '<FIN CABECERA>-------------------------------------------
+    Public Function ComprobarDatosAplicacion() As Boolean
+
+        Const strNombre_Funcion As String = "ComprobarDatosAplicacion"
+        Dim blnError As Boolean
+
+        Dim blnResultado As Boolean
+        Dim blnImpresora As Boolean
+        Dim strImpresora As String
+
+        Try
+            blnResultado = True = False
+            'Comprobar si en la base de datos de incidencias hay una tabla "Incidencias" para comprobar que sea una base de datos valida
+            If blnExisteTabla(gv_strDBPrincipal, gc_strDB_TABLA_Incidencias) Then
+                If Not gv_blnDBLocal Then
+                    'Si se utiliza la base de datos de factusol para los clientes, comprobar que exista la tabla "F_CLI" para comprobar que sea una base de datos valida
+                    If blnExisteTabla(gv_strDBFactusol, gc_strDB_TABLA_Clientes) Then
+                        'Comprobar que los nombres de las impresroras coicidan con alguna de las impresoras instaladas en el sistema
+                        If gv_strImpresoraIncidencias <> "" Then
+                            For Each strImpresora In Printing.PrinterSettings.InstalledPrinters
+                                If strImpresora.Equals(gv_strImpresoraIncidencias) Then
+                                    blnImpresora = True
+                                    Exit For
+                                Else
+                                    blnImpresora = False
+                                End If
+                            Next
+                            If Not blnImpresora Then
+                                gv_strImpresoraIncidencias = ""
+                            End If
+                        End If
+
+                        If gv_strImpresoraInformes <> "" Then
+                            For Each strImpresora In Printing.PrinterSettings.InstalledPrinters
+                                If strImpresora.Equals(gv_strImpresoraInformes) Then
+                                    blnImpresora = True
+                                    Exit For
+                                Else
+                                    blnImpresora = False
+                                End If
+                            Next
+                            If Not blnImpresora Then
+                                gv_strImpresoraIncidencias = ""
+                            End If
+                            blnResultado = True
+                        Else
+                            blnResultado = True
+                        End If
+                    Else
+                        blnResultado = False
+                    End If
+                Else
+                    'Comprobar que los nombres de las impresroras coicidan con alguna de las impresoras instaladas en el sistema
+                    If gv_strImpresoraIncidencias <> "" Then
+                        For Each strImpresora In Printing.PrinterSettings.InstalledPrinters
+                            If strImpresora.Equals(gv_strImpresoraIncidencias) Then
+                                blnImpresora = True
+                                Exit For
+                            Else
+                                blnImpresora = False
+                            End If
+                        Next
+                        If Not blnImpresora Then
+                            gv_strImpresoraIncidencias = ""
+                        End If
+                    End If
+
+                    If gv_strImpresoraInformes <> "" Then
+                        For Each strImpresora In Printing.PrinterSettings.InstalledPrinters
+                            If strImpresora.Equals(gv_strImpresoraInformes) Then
+                                blnImpresora = True
+                                Exit For
+                            Else
+                                blnImpresora = False
+                            End If
+                        Next
+                        If Not blnImpresora Then
+                            gv_strImpresoraIncidencias = ""
+                        End If
+                        blnResultado = True
+                    Else
+                        blnResultado = True
+                    End If
+                End If
+            Else
+                blnResultado = False
+            End If
+        Catch ex As Exception
+            blnError = True
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        Finally
+            If blnError Then
+                blnResultado = False
+            End If
+            ComprobarDatosAplicacion = blnResultado
+        End Try
+    End Function
+
+    '<CABECERA>-----------------------------------------------
     'Descripcion......: Carga el archivo de configuracion INI
     'Fecha............: 25/05/2014
     '<FIN CABECERA>-------------------------------------------

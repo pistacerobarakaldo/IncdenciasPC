@@ -31,7 +31,12 @@ Public Class frmPrincipal
             'CARGAR ARCHIVO DE CONFIGURACION
             CargarConfiguracionINI()
             EstablecerFiltrosEstados()
-            CargarFormularios()
+            If ComprobarDatosAplicacion() Then
+                CargarFormularios()
+            Else
+                MsgBox("Alguna de las bases de datos seleccionada no es correcta. Por favor revise su configuración", MsgBoxStyle.Exclamation + vbOKOnly, "Error de acceso")
+                CargarFormularioConfiguracion()
+            End If
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
@@ -380,6 +385,17 @@ Public Class frmPrincipal
         Const strNombre_Funcion As String = "btnConfigC_Click"
 
         Try
+            CargarFormularioConfiguracion()
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
+    Private Sub CargarFormularioConfiguracion()
+
+        Const strNombre_Funcion As String = "CargarFormularioConfiguracion"
+
+        Try
             frmCondiguracion.ShowDialog()
             If frmCondiguracion.Guardado Then
                 CerrarAplicacion()
@@ -390,9 +406,9 @@ Public Class frmPrincipal
         End Try
     End Sub
 
-    Private Sub ToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAcercade1.Click, btnAcercade2.Click
+    Private Sub Acercade_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAcercade1.Click, btnAcercade2.Click
 
-        Const strNombre_Funcion As String = "ToolStripButton2_Click"
+        Const strNombre_Funcion As String = "Acercade_Click"
 
         Try
             frmAcercade.ShowDialog()

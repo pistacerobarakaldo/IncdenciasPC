@@ -30,8 +30,6 @@ Module modDBAccessSOL
                 blnCambioDB = True
             End If
 
-            m_strDBPath = "Z:\Datos\0022014.mdb"
-
             If m_cnxConexion.State <> ConnectionState.Open Then
                 m_cnxConexion.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & m_strDBPath & ";Persist Security Info=False"
                 m_cnxConexion.Open()

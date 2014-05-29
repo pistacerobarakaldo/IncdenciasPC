@@ -26,6 +26,10 @@ Partial Class frmPrincipal
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.tbcPrincipal = New System.Windows.Forms.TabControl()
         Me.tbpIncidencias = New System.Windows.Forms.TabPage()
+        Me.ToolStrip7 = New System.Windows.Forms.ToolStrip()
+        Me.btnConfigI = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStrip8 = New System.Windows.Forms.ToolStrip()
+        Me.btnAcercade2 = New System.Windows.Forms.ToolStripButton()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.tspLin2 = New System.Windows.Forms.ToolStrip()
         Me.btnModificarI = New System.Windows.Forms.ToolStripButton()
@@ -54,6 +58,10 @@ Partial Class frmPrincipal
         Me.chbAbierta = New System.Windows.Forms.CheckBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.tbpClientes = New System.Windows.Forms.TabPage()
+        Me.ToolStrip6 = New System.Windows.Forms.ToolStrip()
+        Me.btnConfigC = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStrip9 = New System.Windows.Forms.ToolStrip()
+        Me.btnAcercade1 = New System.Windows.Forms.ToolStripButton()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.ToolStrip4 = New System.Windows.Forms.ToolStrip()
         Me.btnBuscarC = New System.Windows.Forms.ToolStripButton()
@@ -70,17 +78,11 @@ Partial Class frmPrincipal
         Me.btnNuevo = New System.Windows.Forms.ToolStripButton()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.ToolStrip8 = New System.Windows.Forms.ToolStrip()
-        Me.btnAcercade2 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStrip7 = New System.Windows.Forms.ToolStrip()
-        Me.btnConfigI = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStrip9 = New System.Windows.Forms.ToolStrip()
-        Me.btnAcercade1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStrip6 = New System.Windows.Forms.ToolStrip()
-        Me.btnConfigC = New System.Windows.Forms.ToolStripButton()
         Me.Panel1.SuspendLayout()
         Me.tbcPrincipal.SuspendLayout()
         Me.tbpIncidencias.SuspendLayout()
+        Me.ToolStrip7.SuspendLayout()
+        Me.ToolStrip8.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.tspLin2.SuspendLayout()
         Me.tspLin1.SuspendLayout()
@@ -91,16 +93,14 @@ Partial Class frmPrincipal
         Me.Panel8.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.tbpClientes.SuspendLayout()
+        Me.ToolStrip6.SuspendLayout()
+        Me.ToolStrip9.SuspendLayout()
         Me.Panel9.SuspendLayout()
         Me.ToolStrip4.SuspendLayout()
         Me.ToolStrip5.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.ToolStrip2.SuspendLayout()
-        Me.ToolStrip8.SuspendLayout()
-        Me.ToolStrip7.SuspendLayout()
-        Me.ToolStrip9.SuspendLayout()
-        Me.ToolStrip6.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -143,6 +143,55 @@ Partial Class frmPrincipal
         Me.tbpIncidencias.Size = New System.Drawing.Size(1095, 100)
         Me.tbpIncidencias.TabIndex = 0
         Me.tbpIncidencias.Text = "Incidencias"
+        '
+        'ToolStrip7
+        '
+        Me.ToolStrip7.BackColor = System.Drawing.Color.Transparent
+        Me.ToolStrip7.Dock = System.Windows.Forms.DockStyle.Right
+        Me.ToolStrip7.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.ToolStrip7.ImageScalingSize = New System.Drawing.Size(72, 72)
+        Me.ToolStrip7.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnConfigI})
+        Me.ToolStrip7.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
+        Me.ToolStrip7.Location = New System.Drawing.Point(795, 3)
+        Me.ToolStrip7.Name = "ToolStrip7"
+        Me.ToolStrip7.Size = New System.Drawing.Size(90, 94)
+        Me.ToolStrip7.TabIndex = 9
+        Me.ToolStrip7.Text = "ToolStrip1"
+        '
+        'btnConfigI
+        '
+        Me.btnConfigI.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnConfigI.Image = CType(resources.GetObject("btnConfigI.Image"), System.Drawing.Image)
+        Me.btnConfigI.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnConfigI.Name = "btnConfigI"
+        Me.btnConfigI.Size = New System.Drawing.Size(87, 91)
+        Me.btnConfigI.Text = "Configuración"
+        Me.btnConfigI.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'ToolStrip8
+        '
+        Me.ToolStrip8.BackColor = System.Drawing.Color.Transparent
+        Me.ToolStrip8.Dock = System.Windows.Forms.DockStyle.Right
+        Me.ToolStrip8.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.ToolStrip8.ImageScalingSize = New System.Drawing.Size(200, 72)
+        Me.ToolStrip8.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnAcercade2})
+        Me.ToolStrip8.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
+        Me.ToolStrip8.Location = New System.Drawing.Point(885, 3)
+        Me.ToolStrip8.Name = "ToolStrip8"
+        Me.ToolStrip8.Size = New System.Drawing.Size(207, 94)
+        Me.ToolStrip8.TabIndex = 8
+        Me.ToolStrip8.Text = "ToolStrip1"
+        '
+        'btnAcercade2
+        '
+        Me.btnAcercade2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnAcercade2.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnAcercade2.Image = CType(resources.GetObject("btnAcercade2.Image"), System.Drawing.Image)
+        Me.btnAcercade2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnAcercade2.Name = "btnAcercade2"
+        Me.btnAcercade2.Size = New System.Drawing.Size(204, 91)
+        Me.btnAcercade2.Text = "Configuración"
+        Me.btnAcercade2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'Panel6
         '
@@ -466,6 +515,55 @@ Partial Class frmPrincipal
         Me.tbpClientes.TabIndex = 1
         Me.tbpClientes.Text = "Clientes"
         '
+        'ToolStrip6
+        '
+        Me.ToolStrip6.BackColor = System.Drawing.Color.Transparent
+        Me.ToolStrip6.Dock = System.Windows.Forms.DockStyle.Right
+        Me.ToolStrip6.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.ToolStrip6.ImageScalingSize = New System.Drawing.Size(72, 72)
+        Me.ToolStrip6.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnConfigC})
+        Me.ToolStrip6.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
+        Me.ToolStrip6.Location = New System.Drawing.Point(795, 3)
+        Me.ToolStrip6.Name = "ToolStrip6"
+        Me.ToolStrip6.Size = New System.Drawing.Size(90, 94)
+        Me.ToolStrip6.TabIndex = 12
+        Me.ToolStrip6.Text = "ToolStrip1"
+        '
+        'btnConfigC
+        '
+        Me.btnConfigC.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnConfigC.Image = CType(resources.GetObject("btnConfigC.Image"), System.Drawing.Image)
+        Me.btnConfigC.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnConfigC.Name = "btnConfigC"
+        Me.btnConfigC.Size = New System.Drawing.Size(87, 91)
+        Me.btnConfigC.Text = "Configuración"
+        Me.btnConfigC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'ToolStrip9
+        '
+        Me.ToolStrip9.BackColor = System.Drawing.Color.Transparent
+        Me.ToolStrip9.Dock = System.Windows.Forms.DockStyle.Right
+        Me.ToolStrip9.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.ToolStrip9.ImageScalingSize = New System.Drawing.Size(200, 72)
+        Me.ToolStrip9.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnAcercade1})
+        Me.ToolStrip9.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
+        Me.ToolStrip9.Location = New System.Drawing.Point(885, 3)
+        Me.ToolStrip9.Name = "ToolStrip9"
+        Me.ToolStrip9.Size = New System.Drawing.Size(207, 94)
+        Me.ToolStrip9.TabIndex = 11
+        Me.ToolStrip9.Text = "ToolStrip1"
+        '
+        'btnAcercade1
+        '
+        Me.btnAcercade1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnAcercade1.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnAcercade1.Image = CType(resources.GetObject("btnAcercade1.Image"), System.Drawing.Image)
+        Me.btnAcercade1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnAcercade1.Name = "btnAcercade1"
+        Me.btnAcercade1.Size = New System.Drawing.Size(204, 91)
+        Me.btnAcercade1.Text = "Configuración"
+        Me.btnAcercade1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
         'Panel9
         '
         Me.Panel9.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
@@ -642,104 +740,6 @@ Partial Class frmPrincipal
         Me.MenuStrip1.Text = "MenuStrip1"
         Me.MenuStrip1.Visible = False
         '
-        'ToolStrip8
-        '
-        Me.ToolStrip8.BackColor = System.Drawing.Color.Transparent
-        Me.ToolStrip8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.ToolStrip8.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip8.ImageScalingSize = New System.Drawing.Size(200, 72)
-        Me.ToolStrip8.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnAcercade2})
-        Me.ToolStrip8.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
-        Me.ToolStrip8.Location = New System.Drawing.Point(854, 3)
-        Me.ToolStrip8.Name = "ToolStrip8"
-        Me.ToolStrip8.Size = New System.Drawing.Size(238, 94)
-        Me.ToolStrip8.TabIndex = 8
-        Me.ToolStrip8.Text = "ToolStrip1"
-        '
-        'btnAcercade2
-        '
-        Me.btnAcercade2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnAcercade2.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.btnAcercade2.Image = CType(resources.GetObject("btnAcercade2.Image"), System.Drawing.Image)
-        Me.btnAcercade2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnAcercade2.Name = "btnAcercade2"
-        Me.btnAcercade2.Size = New System.Drawing.Size(204, 91)
-        Me.btnAcercade2.Text = "Configuración"
-        Me.btnAcercade2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'ToolStrip7
-        '
-        Me.ToolStrip7.BackColor = System.Drawing.Color.Transparent
-        Me.ToolStrip7.Dock = System.Windows.Forms.DockStyle.Right
-        Me.ToolStrip7.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip7.ImageScalingSize = New System.Drawing.Size(72, 72)
-        Me.ToolStrip7.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnConfigI})
-        Me.ToolStrip7.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
-        Me.ToolStrip7.Location = New System.Drawing.Point(764, 3)
-        Me.ToolStrip7.Name = "ToolStrip7"
-        Me.ToolStrip7.Size = New System.Drawing.Size(90, 94)
-        Me.ToolStrip7.TabIndex = 9
-        Me.ToolStrip7.Text = "ToolStrip1"
-        '
-        'btnConfigI
-        '
-        Me.btnConfigI.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.btnConfigI.Image = CType(resources.GetObject("btnConfigI.Image"), System.Drawing.Image)
-        Me.btnConfigI.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnConfigI.Name = "btnConfigI"
-        Me.btnConfigI.Size = New System.Drawing.Size(87, 91)
-        Me.btnConfigI.Text = "Configuración"
-        Me.btnConfigI.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'ToolStrip9
-        '
-        Me.ToolStrip9.BackColor = System.Drawing.Color.Transparent
-        Me.ToolStrip9.Dock = System.Windows.Forms.DockStyle.Right
-        Me.ToolStrip9.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip9.ImageScalingSize = New System.Drawing.Size(200, 72)
-        Me.ToolStrip9.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnAcercade1})
-        Me.ToolStrip9.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
-        Me.ToolStrip9.Location = New System.Drawing.Point(885, 3)
-        Me.ToolStrip9.Name = "ToolStrip9"
-        Me.ToolStrip9.Size = New System.Drawing.Size(207, 94)
-        Me.ToolStrip9.TabIndex = 11
-        Me.ToolStrip9.Text = "ToolStrip1"
-        '
-        'btnAcercade1
-        '
-        Me.btnAcercade1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnAcercade1.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.btnAcercade1.Image = CType(resources.GetObject("btnAcercade1.Image"), System.Drawing.Image)
-        Me.btnAcercade1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnAcercade1.Name = "btnAcercade1"
-        Me.btnAcercade1.Size = New System.Drawing.Size(204, 91)
-        Me.btnAcercade1.Text = "Configuración"
-        Me.btnAcercade1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'ToolStrip6
-        '
-        Me.ToolStrip6.BackColor = System.Drawing.Color.Transparent
-        Me.ToolStrip6.Dock = System.Windows.Forms.DockStyle.Right
-        Me.ToolStrip6.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip6.ImageScalingSize = New System.Drawing.Size(72, 72)
-        Me.ToolStrip6.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnConfigC})
-        Me.ToolStrip6.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
-        Me.ToolStrip6.Location = New System.Drawing.Point(795, 3)
-        Me.ToolStrip6.Name = "ToolStrip6"
-        Me.ToolStrip6.Size = New System.Drawing.Size(90, 94)
-        Me.ToolStrip6.TabIndex = 12
-        Me.ToolStrip6.Text = "ToolStrip1"
-        '
-        'btnConfigC
-        '
-        Me.btnConfigC.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.btnConfigC.Image = CType(resources.GetObject("btnConfigC.Image"), System.Drawing.Image)
-        Me.btnConfigC.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnConfigC.Name = "btnConfigC"
-        Me.btnConfigC.Size = New System.Drawing.Size(87, 91)
-        Me.btnConfigC.Text = "Configuración"
-        Me.btnConfigC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -749,6 +749,7 @@ Partial Class frmPrincipal
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmPrincipal"
@@ -759,6 +760,10 @@ Partial Class frmPrincipal
         Me.tbcPrincipal.ResumeLayout(False)
         Me.tbpIncidencias.ResumeLayout(False)
         Me.tbpIncidencias.PerformLayout()
+        Me.ToolStrip7.ResumeLayout(False)
+        Me.ToolStrip7.PerformLayout()
+        Me.ToolStrip8.ResumeLayout(False)
+        Me.ToolStrip8.PerformLayout()
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
         Me.tspLin2.ResumeLayout(False)
@@ -778,6 +783,10 @@ Partial Class frmPrincipal
         Me.Panel5.PerformLayout()
         Me.tbpClientes.ResumeLayout(False)
         Me.tbpClientes.PerformLayout()
+        Me.ToolStrip6.ResumeLayout(False)
+        Me.ToolStrip6.PerformLayout()
+        Me.ToolStrip9.ResumeLayout(False)
+        Me.ToolStrip9.PerformLayout()
         Me.Panel9.ResumeLayout(False)
         Me.Panel9.PerformLayout()
         Me.ToolStrip4.ResumeLayout(False)
@@ -790,14 +799,6 @@ Partial Class frmPrincipal
         Me.ToolStrip1.PerformLayout()
         Me.ToolStrip2.ResumeLayout(False)
         Me.ToolStrip2.PerformLayout()
-        Me.ToolStrip8.ResumeLayout(False)
-        Me.ToolStrip8.PerformLayout()
-        Me.ToolStrip7.ResumeLayout(False)
-        Me.ToolStrip7.PerformLayout()
-        Me.ToolStrip9.ResumeLayout(False)
-        Me.ToolStrip9.PerformLayout()
-        Me.ToolStrip6.ResumeLayout(False)
-        Me.ToolStrip6.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

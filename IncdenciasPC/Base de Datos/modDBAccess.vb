@@ -33,8 +33,6 @@ Module modDBAccess
                 blnCambioDB = True
             End If
 
-            m_strDBPath = "C:\Users\Borja\Google Drive\Programacion\Proyectos\IncdenciasPC\IncdenciasPC\bin\Debug\Incidencias.accdb"
-
             If m_cnxConexion.State <> ConnectionState.Open Then
                 m_cnxConexion.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & m_strDBPath & ";Persist Security Info=False"
                 m_cnxConexion.Open()
@@ -124,19 +122,59 @@ Module modDBAccess
             cmdCommand.Connection = m_cnxConexion
             cmdCommand.CommandText = strSQL
             cmdCommand.ExecuteNonQuery()
-            'Se cierra la conexion con la base de datos
-            'CerrarConexion()
+            blnResultado = True
         Catch ex As Exception
             blnError = True
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         Finally
             If blnError Then
                 blnResultado = False
-            Else
-                blnResultado = True
             End If
-
             blnEjecutarQuery = blnResultado
+        End Try
+    End Function
+
+    '<CABECERA>-----------------------------------------------
+    'Descripcion......: Averigua si existe una tabla en la base de datos
+    'Fecha............: 21/02/2012
+    '<FIN CABECERA>-------------------------------------------
+    Public Function blnExisteTabla(ByVal strDBPath As String, ByVal strTabla As String) As Boolean
+
+        Const strNombre_Funcion As String = "blnExisteTabla"
+        Dim blnError As Boolean
+
+        Dim blnResultado As Boolean
+        Dim cnxConexion As OleDbConnection
+        Dim dttTabla As DataTable
+        Dim objRows() As DataRow
+        Dim strCriterio As String
+
+        Try
+            If strDBPath <> "" Then
+                'Abre la base de datos  
+                cnxConexion = New OleDbConnection
+                cnxConexion.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & strDBPath & ";Persist Security Info=False"
+                cnxConexion.Open()
+
+                'Declara y abre el recordset  
+                dttTabla = cnxConexion.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, New Object() {Nothing, Nothing, Nothing, "TABLE"})
+
+                strCriterio = String.Format("TABLE_NAME = '{0}'", strTabla)
+
+                objRows = dttTabla.Select(strCriterio)
+
+                blnResultado = (objRows.Length > 0)
+            Else
+                blnResultado = False
+            End If
+        Catch ex As Exception
+            blnError = True
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        Finally
+            If blnError Then
+                blnResultado = False
+            End If
+            blnExisteTabla = blnResultado
         End Try
     End Function
 End Module
