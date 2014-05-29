@@ -17,6 +17,7 @@ Public Class frmPrincipal
             frmListadoIncidencias.WindowState = FormWindowState.Minimized
             frmListadoIncidencias.WindowState = FormWindowState.Maximized
             frmListadoIncidencias.Ajustar()
+            HabilitarBotonesIncidencias()
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
@@ -374,7 +375,7 @@ Public Class frmPrincipal
         End Try
     End Sub
 
-    Private Sub btnConfigC_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConfigC.Click, btnConfigI.Click
+    Private Sub btnConfigC_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConfigI.Click, btnConfigC.Click
 
         Const strNombre_Funcion As String = "btnConfigC_Click"
 
@@ -388,6 +389,18 @@ Public Class frmPrincipal
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
     End Sub
+
+    Private Sub ToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAcercade1.Click, btnAcercade2.Click
+
+        Const strNombre_Funcion As String = "ToolStripButton2_Click"
+
+        Try
+            frmAcercade.ShowDialog()
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
 
     Private Sub frmPrincipal_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
 
@@ -432,4 +445,6 @@ Public Class frmPrincipal
             Return Config_strGenerarFiltroDataGridView(txtFiltroI.Text, cbxCamposI.SelectedItem)
         End Get
     End Property
+
+    
 End Class

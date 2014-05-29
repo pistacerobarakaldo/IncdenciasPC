@@ -124,6 +124,12 @@
     </Compile>
     <Compile Include="Base de Datos\SQL\modBDQClientes.vb" />
     <Compile Include="Base de Datos\Gestion\modDBGClientes.vb" />
+    <Compile Include="Formularios\frmAcercade.Designer.vb">
+      <DependentUpon>frmAcercade.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmAcercade.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\frmPrincipal.Designer.vb">
       <DependentUpon>frmPrincipal.vb</DependentUpon>
     </Compile>
@@ -248,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Clientes\Ficha Cliente\frmFichaCliente.resx">
       <DependentUpon>frmFichaCliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAcercade.resx">
+      <DependentUpon>frmAcercade.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.vb</DependentUpon>

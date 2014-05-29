@@ -77,9 +77,9 @@
         End Try
     End Sub
 
-    Private Sub dgvIncidencias_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
+    Private Sub dgvIncidencias_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvIncidencias.DoubleClick
 
-        Const strNombre_Funcion As String = "dgvFacturas_CellDoubleClick"
+        Const strNombre_Funcion As String = "dgvIncidencias_CellDoubleClick"
         Dim blnError As Boolean
 
         Dim blnResultado As Boolean
@@ -108,7 +108,7 @@
         End Get
     End Property
 
-    Private Sub dgvIncidencias_RowStateChanged(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowStateChangedEventArgs)
+    Private Sub dgvIncidencias_RowStateChanged(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowStateChangedEventArgs) Handles dgvIncidencias.RowStateChanged
 
         Const strNombre_Funcion As String = "dgvIncidencias_RowStateChanged"
 
