@@ -86,4 +86,51 @@ Module modDBGClientes
             Clie_GuardarCliente = blnResultado
         End Try
     End Function
+
+    '<CABECERA>-----------------------------------------------
+    'Descripcion......: Elimina una incidencia de la base de datos
+    'Fecha............: 25/05/2014
+    '<FIN CABECERA>-------------------------------------------
+    Public Function Clie_EliminarCliente(ByVal lngCliente As Long) As Boolean
+
+        Const strNombre_Funcion As String = "Inci_EliminarIncidencia"
+        Dim blnError As Boolean
+
+        Dim blnResultado As Boolean
+        Dim lngIncidencia As Long
+        Dim strQuery As String
+        Dim strWhere As String
+        Dim dttIncidencias As DataTable
+        Dim objRow As DataRow
+
+        Try
+            strQuery = Clie_strQueryEliminarCliente(lngCliente)
+            If blnEjecutarQuery(strQuery) Then
+                'Eliminarmos las incidencias asociadas al cliente
+                strWhere = "WHERE " & gc_strDB_TABLA_Incidencias & "." & gc_strDB_C_Cliente & " = " & lngCliente
+                dttIncidencias = Inci_dttObtenerIncidencias(, strWhere)
+                For Each objRow In dttIncidencias.Rows
+                    lngIncidencia = objRow(gc_strLP_I_Incidencia)
+                    strQuery = Inci_EliminarIncidencia(lngIncidencia)
+                    If Not blnEjecutarQuery(strQuery) Then
+                        blnResultado = False
+                        Exit For
+                    Else
+                        blnResultado = True
+                    End If
+                Next
+            Else
+                blnResultado = False
+            End If
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+            blnError = True
+        Finally
+            If blnError Then
+                blnResultado = False
+            End If
+            Clie_EliminarCliente = blnResultado
+        End Try
+    End Function
+
 End Module

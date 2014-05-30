@@ -69,11 +69,11 @@ Public Class frmPrincipal
             If frmListadoIncidencias.DataGridIncidencias.Rows.Count > 0 Then
                 frmListadoIncidencias.DataGridIncidencias.Rows(0).Selected = True
                 btnModificarI.Enabled = True
-                btnEliminar.Enabled = True
+                btnEliminarI.Enabled = True
                 btnImprimir.Enabled = True
             Else
                 btnModificarI.Enabled = False
-                btnEliminar.Enabled = False
+                btnEliminarI.Enabled = False
                 btnImprimir.Enabled = False
             End If
         Catch ex As Exception
@@ -89,8 +89,14 @@ Public Class frmPrincipal
             If frmListadoClientes.DataGridClientes.Rows.Count > 0 Then
                 frmListadoClientes.DataGridClientes.Rows(0).Selected = True
                 btnModificarC.Enabled = True
+                If gv_blnDBLocal Then
+                    btnEliminarC.Enabled = True
+                Else
+                    btnEliminarC.Enabled = False
+                End If
             Else
                 btnModificarC.Enabled = False
+                btnEliminarC.Enabled = False
             End If
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
@@ -129,7 +135,7 @@ Public Class frmPrincipal
         End Try
     End Sub
 
-    Private Sub Incidencias_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNueva.Click, btnModificarI.Click, btnEliminar.Click, btnImprimir.Click, btnBuscarIncidencia.Click, btnActualizarI.Click
+    Private Sub Incidencias_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNueva.Click, btnModificarI.Click, btnEliminarI.Click, btnImprimir.Click, btnBuscarI.Click, btnActualizarI.Click
 
         Const strNombre_Funcion As String = "Incidencias_Click"
 
@@ -152,7 +158,7 @@ Public Class frmPrincipal
                         frmFichaIncidencia.ShowDialog()
                     End If
                     ActualizarIncidencias()
-                Case btnEliminar.Name
+                Case btnEliminarI.Name
                     lngIncidencia = frmListadoIncidencias.DataGridIncidencias.SelectedRows(0).Cells(gc_strLP_I_Incidencia).Value
                     If MsgBox("¿Estas seguro de eliminar la incidencia " & lngIncidencia & "?" & vbCrLf & _
                                "No se podrán volver a recuperar los datos asociados a esta incidencia", MsgBoxStyle.Question + MsgBoxStyle.OkCancel, "Eliminar incidencia") = MsgBoxResult.Ok Then
@@ -166,7 +172,7 @@ Public Class frmPrincipal
                     If frmImprimirIncidencia.CargarFormulario(lngIncidencia, gv_lngTipoImpresoIncidencia) Then
                         frmImprimirIncidencia.ShowDialog()
                     End If
-                Case btnBuscarIncidencia.Name
+                Case btnBuscarI.Name
                     AplicarFiltroIncidencias()
                 Case btnActualizarI.Name
                     ActualizarIncidencias()
@@ -176,14 +182,14 @@ Public Class frmPrincipal
         End Try
     End Sub
 
-    Private Sub Clientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevo.Click, btnModificarC.Click, btnBuscarC.Click, btnActualizarC.Click
+    Private Sub Clientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevo.Click, btnModificarC.Click, btnEliminarC.Click, btnBuscarC.Click, btnActualizarC.Click
 
         Const strNombre_Funcion As String = "Clientes_Click"
 
         Dim objBoton As ToolStripButton
         Dim blnResultado As Boolean
         Dim objCliente As clsCliente
-
+        
         Try
             objBoton = sender
             Select Case objBoton.Name
@@ -199,6 +205,15 @@ Public Class frmPrincipal
                     blnResultado = frmFichaCliente.blnCargarCliente(objCliente)
                     If blnResultado Then
                         frmFichaCliente.ShowDialog()
+                    End If
+                    ActualizarClientes()
+                Case btnEliminarC.Name
+                    objCliente = New clsCliente(frmListadoClientes.LineaSeleccionada)
+                    If MsgBox("¿Estas seguro de eliminar el cliente " & objCliente.Id & "-" & objCliente.NombreFiscal & "?" & vbCrLf & _
+                               "No se podrán volver a recuperar los datos asociados a este cliente", MsgBoxStyle.Question + MsgBoxStyle.OkCancel, "Eliminar cliente") = MsgBoxResult.Ok Then
+                        If Not Clie_EliminarCliente(objCliente.Id) Then
+                            MsgBox("Ha ocurrido un error durante la eliminacion del cliente. Por favor, intentelo de nuevo", MsgBoxStyle.Critical, "Eliminar cliente")
+                        End If
                     End If
                     ActualizarClientes()
                 Case btnBuscarC.Name
@@ -462,5 +477,4 @@ Public Class frmPrincipal
         End Get
     End Property
 
-    
 End Class
