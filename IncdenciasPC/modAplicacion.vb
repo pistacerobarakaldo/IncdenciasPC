@@ -1,6 +1,8 @@
 ﻿Option Explicit On
 Option Compare Text
 
+Imports tsbRports
+
 Public Enum AperturaFormulario
     Nuevo
     Editar
@@ -43,6 +45,9 @@ Module modAplicacion
     Public gv_blnAvisado As Boolean
     Public gv_blnCerrada As Boolean
     Public gv_blnEngarantia As Boolean
+
+    'Variable que contiene todos los informes
+    Public gv_objReports As New clsReport(Application.ExecutablePath)
 
     '<CABECERA>-----------------------------------------------
     'Descripcion......: Comprueba que los datos de la aplicacion sean correctos
@@ -89,7 +94,7 @@ Module modAplicacion
                                 End If
                             Next
                             If Not blnImpresora Then
-                                gv_strImpresoraIncidencias = ""
+                                gv_strImpresoraInformes = ""
                             End If
                             blnResultado = True
                         Else
@@ -124,7 +129,7 @@ Module modAplicacion
                             End If
                         Next
                         If Not blnImpresora Then
-                            gv_strImpresoraIncidencias = ""
+                            gv_strImpresoraInformes = ""
                         End If
                         blnResultado = True
                     Else

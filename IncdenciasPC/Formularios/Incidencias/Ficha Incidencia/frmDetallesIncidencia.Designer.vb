@@ -172,7 +172,6 @@ Partial Class frmDetallesIncidencia
         Me.txtIdCliente.BackColor = System.Drawing.SystemColors.Window
         Me.txtIdCliente.Location = New System.Drawing.Point(70, 54)
         Me.txtIdCliente.Name = "txtIdCliente"
-        Me.txtIdCliente.ReadOnly = True
         Me.txtIdCliente.Size = New System.Drawing.Size(64, 21)
         Me.txtIdCliente.TabIndex = 17
         Me.txtIdCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right

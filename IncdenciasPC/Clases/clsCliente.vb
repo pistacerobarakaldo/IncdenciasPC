@@ -15,7 +15,7 @@
     Private m_strMovil As String
     Private m_strFax As String
     Private m_strContacto As String
-    Private m_lngFormaPago As Long '0
+    Private m_strFormaPago As String '0
     Private m_lngTarifa As Long '1
     Private m_dteFechaAlta As Date
     Private m_strEmail As String
@@ -55,34 +55,57 @@
                 m_dteFechaAlta = dtrRow.Cells(gc_strLP_F_Alta).Value
                 m_dteFechaModif = dtrRow.Cells(gc_strLP_F_Modif).Value
                 m_lngTipoDoc = dtrRow.Cells(gc_strDB_V_TipoDoc).Value
-                m_lngFormaPago = dtrRow.Cells(gc_strDB_D_FormaPago).Value
+                m_strFormaPago = dtrRow.Cells(gc_strDB_D_FormaPago).Value
                 m_lngTarifa = dtrRow.Cells(gc_strDB_V_Tarifa).Value
             Else
                 If lngId <> -1 Then
                     dttTable = Clie_dttObtenerClientes(lngId)
                     If Not dttTable Is Nothing Then
-                        objRegistro = dttTable.Rows(0)
+                        If dttTable.Rows.Count > 0 Then
+                            objRegistro = dttTable.Rows(0)
 
-                        m_lngId = objRegistro(gc_strLP_I_Cliente)
-                        m_strNIF = objRegistro(gc_strLP_D_NIFCliente)
-                        m_strNomFiscal = objRegistro(gc_strLP_D_NomFiscal)
-                        m_strNomComercial = objRegistro(gc_strLP_D_NomCliente)
-                        m_strDomicilio = objRegistro(gc_strLP_D_DomCliente)
-                        m_strCP = objRegistro(gc_strLP_D_CPCliente)
-                        m_strPoblacion = objRegistro(gc_strLP_D_PobCliente)
-                        m_strProvincia = objRegistro(gc_strLP_D_PorvCliente)
-                        m_strPais = objRegistro(gc_strLP_D_Pais)
-                        m_strTelefono = objRegistro(gc_strLP_D_Telefono)
-                        m_strMovil = objRegistro(gc_strLP_D_Movil)
-                        m_strFax = objRegistro(gc_strLP_D_Fax)
-                        m_strEmail = objRegistro(gc_strLP_D_Email)
-                        m_strContacto = objRegistro(gc_strLP_D_ContCliente)
-                        m_strObservaciones = objRegistro(gc_strLP_D_Observ)
-                        m_dteFechaAlta = Format(Date.Parse(objRegistro(gc_strLP_F_Alta)), "dd/MM/yyyy")
-                        m_dteFechaModif = Format(Date.Parse(objRegistro(gc_strLP_F_Modif)), "dd/MM/yyyy")
-                        m_lngTipoDoc = objRegistro(gc_strDB_V_TipoDoc)
-                        m_lngFormaPago = objRegistro(gc_strDB_D_FormaPago)
-                        m_lngTarifa = objRegistro(gc_strDB_V_Tarifa)
+                            m_lngId = objRegistro(gc_strLP_I_Cliente)
+                            m_strNIF = objRegistro(gc_strLP_D_NIFCliente)
+                            m_strNomFiscal = objRegistro(gc_strLP_D_NomFiscal)
+                            m_strNomComercial = objRegistro(gc_strLP_D_NomCliente)
+                            m_strDomicilio = objRegistro(gc_strLP_D_DomCliente)
+                            m_strCP = objRegistro(gc_strLP_D_CPCliente)
+                            m_strPoblacion = objRegistro(gc_strLP_D_PobCliente)
+                            m_strProvincia = objRegistro(gc_strLP_D_PorvCliente)
+                            m_strPais = objRegistro(gc_strLP_D_Pais)
+                            m_strTelefono = objRegistro(gc_strLP_D_Telefono)
+                            m_strMovil = objRegistro(gc_strLP_D_Movil)
+                            m_strFax = objRegistro(gc_strLP_D_Fax)
+                            m_strEmail = objRegistro(gc_strLP_D_Email)
+                            m_strContacto = objRegistro(gc_strLP_D_ContCliente)
+                            m_strObservaciones = objRegistro(gc_strLP_D_Observ)
+                            m_dteFechaAlta = Format(Date.Parse(objRegistro(gc_strLP_F_Alta)), "dd/MM/yyyy")
+                            m_dteFechaModif = Format(Date.Parse(objRegistro(gc_strLP_F_Modif)), "dd/MM/yyyy")
+                            m_lngTipoDoc = objRegistro(gc_strDB_V_TipoDoc)
+                            m_strFormaPago = objRegistro(gc_strDB_D_FormaPago)
+                            m_lngTarifa = objRegistro(gc_strDB_V_Tarifa)
+                        Else
+                            m_lngId = 0
+                            m_strNIF = ""
+                            m_strNomFiscal = ""
+                            m_strNomComercial = ""
+                            m_strDomicilio = ""
+                            m_strCP = ""
+                            m_strPoblacion = ""
+                            m_strProvincia = ""
+                            m_strPais = ""
+                            m_strTelefono = ""
+                            m_strMovil = ""
+                            m_strFax = ""
+                            m_strEmail = ""
+                            m_strContacto = ""
+                            m_strObservaciones = ""
+                            m_dteFechaAlta = Date.Today
+                            m_dteFechaModif = Date.Today
+                            m_lngTipoDoc = 1
+                            m_strFormaPago = ""
+                            m_lngTarifa = 1
+                        End If
                     Else
                         m_lngId = 0
                         m_strNIF = ""
@@ -102,7 +125,7 @@
                         m_dteFechaAlta = Date.Today
                         m_dteFechaModif = Date.Today
                         m_lngTipoDoc = 1
-                        m_lngFormaPago = 0
+                        m_strFormaPago = ""
                         m_lngTarifa = 1
                     End If
                 Else
@@ -124,7 +147,7 @@
                     m_dteFechaAlta = Date.Today
                     m_dteFechaModif = Date.Today
                     m_lngTipoDoc = 1
-                    m_lngFormaPago = 0
+                    m_strFormaPago = ""
                     m_lngTarifa = 1
                 End If
             End If
@@ -241,12 +264,12 @@
         End Set
     End Property
 
-    Public Property FormaPago() As Long
+    Public Property FormaPago() As String
         Get
-            Return m_lngFormaPago
+            Return m_strFormaPago
         End Get
-        Set(ByVal value As Long)
-            m_lngFormaPago = value
+        Set(ByVal value As String)
+            m_strFormaPago = value
         End Set
     End Property
 

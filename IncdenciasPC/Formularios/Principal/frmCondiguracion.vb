@@ -54,13 +54,14 @@
             'Rutas
             EscribirINI(gc_strINIS_DBPATH, gc_strINIK_DBPATH_Principal, txtDBIncidencias.Text)
             EscribirINI(gc_strINIS_DBPATH, gc_strINIK_DBPATH_Factusol, txtDBFactusol.Text)
+            EscribirINI(gc_strINIS_DBPATH, gc_strINIK_DBPATH_Local, chkClientesLocal.Checked)
             'Impresoras
             EscribirINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_Incidencias, txtImpresoraIncidencias.Text)
             EscribirINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_Informes, txtImpresoraInformes.Text)
             If rdbTicket.Checked Then
-                LeerINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_TipoImpresoIncidencia, TipoImpreso.Ticket)
+                EscribirINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_TipoImpresoIncidencia, TipoImpreso.Ticket)
             ElseIf rdbFolio.Checked Then
-                LeerINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_TipoImpresoIncidencia, TipoImpreso.Folio)
+                EscribirINI(gc_strINIS_PRINTERS, gc_strINIK_PRINTERS_TipoImpresoIncidencia, TipoImpreso.Folio)
             End If
             m_blnGuardado = True
             Me.Close()
@@ -136,7 +137,7 @@
         Try
             ofdRutas.Title = "Selecciona base de datos de FactuSOL"
             ofdRutas.InitialDirectory = strQuitarFichero(txtDBFactusol.Text)
-            ofdRutas.Filter = "Archivo de Access|*.accdb"
+            ofdRutas.Filter = "Archivo de Access|*.mdb"
             If ofdRutas.ShowDialog = DialogResult.OK Then
                 txtDBFactusol.Text = ofdRutas.FileName
             End If

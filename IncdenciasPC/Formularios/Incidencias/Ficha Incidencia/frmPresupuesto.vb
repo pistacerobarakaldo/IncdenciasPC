@@ -150,7 +150,7 @@
     'Parametros.......: N/A 
     'Retorno..........: N/A
     '<FIN CABECERA>-------------------------------------------
-    Private Sub ValidarValorCelda(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles dgvPresupuesto.KeyPress
+    Private Sub ValidarValorCelda(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
 
         Const strNombre_Funcion As String = "ValidarValorCelda"
 
@@ -282,6 +282,23 @@
             blnGestionarLineasArticulos = Not blnError
         End Try
     End Function
+
+    Private Sub dgvPresupuesto_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles dgvPresupuesto.KeyDown
+
+        Const strNombre_Funcion As String = "dgvPresupuesto_KeyDown"
+
+        Try
+            If dgvPresupuesto.Rows.Count > 0 Then
+                If dgvPresupuesto.CurrentCell.ColumnIndex = dgvPresupuesto.Columns.Count - 1 Then
+                    If Not dgvPresupuesto.CurrentCell.IsInEditMode Then
+                        NuevaLinea()
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
 
     '<CABECERA>-----------------------------------------------
     'Descripcion......: Añade una nueva linea al DataGridView
@@ -415,4 +432,6 @@
             End If
         End Try
     End Function
+
+    
 End Class

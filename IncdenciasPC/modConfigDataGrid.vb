@@ -97,37 +97,39 @@ Module modConfigDataGrid
         Dim objDate As Date
 
         Try
-            strCampo = strPonerCorchetes(objCampo.Descripcion)
+            If Not objCampo Is Nothing Then
+                strCampo = strPonerCorchetes(objCampo.Descripcion)
 
-            'Filtrado por nombre
-            If strTexto <> "" And strCampo <> "" Then
-                Select Case objCampo.TipoElemento
-                    Case udtTiposCampos.Fecha
-                        If strTexto.Length = 8 Then
-                            strAux = Mid(strTexto, 1, 2)
-                            strAux = strAux & "/" & Mid(strTexto, 3, 2)
-                            strAux = strAux & "/" & Mid(strTexto, 5, 4)
-                            blnDateOk = Date.TryParse(strAux, objDate)
-                            If blnDateOk Then
-                                'Se obtiene el filtro
-                                strFiltro = strCampo & " = #" & Format(objDate, "MM/dd/yyyy") & "#"
+                'Filtrado por nombre
+                If strTexto <> "" And strCampo <> "" Then
+                    Select Case objCampo.TipoElemento
+                        Case udtTiposCampos.Fecha
+                            If strTexto.Length = 8 Then
+                                strAux = Mid(strTexto, 1, 2)
+                                strAux = strAux & "/" & Mid(strTexto, 3, 2)
+                                strAux = strAux & "/" & Mid(strTexto, 5, 4)
+                                blnDateOk = Date.TryParse(strAux, objDate)
+                                If blnDateOk Then
+                                    'Se obtiene el filtro
+                                    strFiltro = strCampo & " = #" & Format(objDate, "MM/dd/yyyy") & "#"
+                                Else
+                                    strFiltro = ""
+                                End If
                             Else
                                 strFiltro = ""
                             End If
-                        Else
-                            strFiltro = ""
-                        End If
-                    Case udtTiposCampos.Numerico
-                        strFiltro = "Convert(" & strCampo & ",System.String) like '" & strTexto & "*'"
-                    Case udtTiposCampos.SiNo
-                        If strTexto = "S" Or strTexto = "s" Then
-                            strFiltro = strCampo & " = True"
-                        ElseIf strTexto = "N" Or strTexto = "n" Then
-                            strFiltro = strCampo & " = False"
-                        End If
-                    Case udtTiposCampos.Texto
-                        strFiltro = strCampo & " like '" & strTexto & "*'"
-                End Select
+                        Case udtTiposCampos.Numerico
+                            strFiltro = "Convert(" & strCampo & ",System.String) like '" & strTexto & "*'"
+                        Case udtTiposCampos.SiNo
+                            If strTexto = "S" Or strTexto = "s" Then
+                                strFiltro = strCampo & " = True"
+                            ElseIf strTexto = "N" Or strTexto = "n" Then
+                                strFiltro = strCampo & " = False"
+                            End If
+                        Case udtTiposCampos.Texto
+                            strFiltro = strCampo & " like '" & strTexto & "*'"
+                    End Select
+                End If
             End If
         Catch ex As Exception
             blnError = True

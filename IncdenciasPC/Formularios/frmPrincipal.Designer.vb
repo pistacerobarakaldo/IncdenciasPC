@@ -40,7 +40,7 @@ Partial Class frmPrincipal
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.ToolStrip3 = New System.Windows.Forms.ToolStrip()
-        Me.btnBuscarI = New System.Windows.Forms.ToolStripButton()
+        Me.btnQuitarI = New System.Windows.Forms.ToolStripButton()
         Me.btnActualizarI = New System.Windows.Forms.ToolStripButton()
         Me.tspMos2 = New System.Windows.Forms.ToolStrip()
         Me.txtFiltroI = New System.Windows.Forms.ToolStripTextBox()
@@ -64,7 +64,7 @@ Partial Class frmPrincipal
         Me.btnAcercade1 = New System.Windows.Forms.ToolStripButton()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.ToolStrip4 = New System.Windows.Forms.ToolStrip()
-        Me.btnBuscarC = New System.Windows.Forms.ToolStripButton()
+        Me.btnQuitarC = New System.Windows.Forms.ToolStripButton()
         Me.btnActualizarC = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip5 = New System.Windows.Forms.ToolStrip()
         Me.txtFiltroC = New System.Windows.Forms.ToolStripTextBox()
@@ -79,6 +79,10 @@ Partial Class frmPrincipal
         Me.btnNuevo = New System.Windows.Forms.ToolStripButton()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.btnBuscarI = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnBuscarC = New System.Windows.Forms.ToolStripButton()
         Me.Panel1.SuspendLayout()
         Me.tbcPrincipal.SuspendLayout()
         Me.tbpIncidencias.SuspendLayout()
@@ -302,7 +306,7 @@ Partial Class frmPrincipal
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Location = New System.Drawing.Point(142, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(290, 100)
+        Me.Panel2.Size = New System.Drawing.Size(339, 100)
         Me.Panel2.TabIndex = 4
         '
         'ToolStrip3
@@ -311,23 +315,23 @@ Partial Class frmPrincipal
         Me.ToolStrip3.Dock = System.Windows.Forms.DockStyle.Left
         Me.ToolStrip3.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip3.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.ToolStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnBuscarI, Me.btnActualizarI})
+        Me.ToolStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnBuscarI, Me.btnQuitarI, Me.ToolStripSeparator3, Me.btnActualizarI})
         Me.ToolStrip3.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.ToolStrip3.Location = New System.Drawing.Point(176, 0)
         Me.ToolStrip3.Name = "ToolStrip3"
         Me.ToolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip3.Size = New System.Drawing.Size(143, 79)
+        Me.ToolStrip3.Size = New System.Drawing.Size(162, 79)
         Me.ToolStrip3.TabIndex = 4
         Me.ToolStrip3.Text = "ToolStrip1"
         '
-        'btnBuscarI
+        'btnQuitarI
         '
-        Me.btnBuscarI.Image = CType(resources.GetObject("btnBuscarI.Image"), System.Drawing.Image)
-        Me.btnBuscarI.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnBuscarI.Name = "btnBuscarI"
-        Me.btnBuscarI.Size = New System.Drawing.Size(46, 76)
-        Me.btnBuscarI.Text = "Buscar"
-        Me.btnBuscarI.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btnQuitarI.Image = CType(resources.GetObject("btnQuitarI.Image"), System.Drawing.Image)
+        Me.btnQuitarI.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnQuitarI.Name = "btnQuitarI"
+        Me.btnQuitarI.Size = New System.Drawing.Size(44, 76)
+        Me.btnQuitarI.Text = "Quitar"
+        Me.btnQuitarI.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'btnActualizarI
         '
@@ -378,7 +382,7 @@ Partial Class frmPrincipal
         Me.Label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label1.Location = New System.Drawing.Point(0, 79)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(288, 19)
+        Me.Label1.Size = New System.Drawing.Size(337, 19)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Filtrar"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -390,7 +394,7 @@ Partial Class frmPrincipal
         Me.Panel3.Controls.Add(Me.Panel8)
         Me.Panel3.Controls.Add(Me.Panel5)
         Me.Panel3.Controls.Add(Me.Label2)
-        Me.Panel3.Location = New System.Drawing.Point(437, 0)
+        Me.Panel3.Location = New System.Drawing.Point(485, 0)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(221, 100)
         Me.Panel3.TabIndex = 5
@@ -574,7 +578,7 @@ Partial Class frmPrincipal
         Me.Panel9.Controls.Add(Me.Label4)
         Me.Panel9.Location = New System.Drawing.Point(142, 0)
         Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(290, 100)
+        Me.Panel9.Size = New System.Drawing.Size(339, 100)
         Me.Panel9.TabIndex = 9
         '
         'ToolStrip4
@@ -583,23 +587,23 @@ Partial Class frmPrincipal
         Me.ToolStrip4.Dock = System.Windows.Forms.DockStyle.Left
         Me.ToolStrip4.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip4.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.ToolStrip4.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnBuscarC, Me.btnActualizarC})
+        Me.ToolStrip4.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnBuscarC, Me.btnQuitarC, Me.ToolStripSeparator4, Me.btnActualizarC})
         Me.ToolStrip4.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.ToolStrip4.Location = New System.Drawing.Point(176, 0)
         Me.ToolStrip4.Name = "ToolStrip4"
         Me.ToolStrip4.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip4.Size = New System.Drawing.Size(112, 79)
+        Me.ToolStrip4.Size = New System.Drawing.Size(193, 79)
         Me.ToolStrip4.TabIndex = 4
         Me.ToolStrip4.Text = "ToolStrip1"
         '
-        'btnBuscarC
+        'btnQuitarC
         '
-        Me.btnBuscarC.Image = CType(resources.GetObject("btnBuscarC.Image"), System.Drawing.Image)
-        Me.btnBuscarC.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnBuscarC.Name = "btnBuscarC"
-        Me.btnBuscarC.Size = New System.Drawing.Size(46, 76)
-        Me.btnBuscarC.Text = "Buscar"
-        Me.btnBuscarC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btnQuitarC.Image = CType(resources.GetObject("btnQuitarC.Image"), System.Drawing.Image)
+        Me.btnQuitarC.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnQuitarC.Name = "btnQuitarC"
+        Me.btnQuitarC.Size = New System.Drawing.Size(44, 76)
+        Me.btnQuitarC.Text = "Quitar"
+        Me.btnQuitarC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'btnActualizarC
         '
@@ -650,7 +654,7 @@ Partial Class frmPrincipal
         Me.Label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label4.Location = New System.Drawing.Point(0, 79)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(288, 19)
+        Me.Label4.Size = New System.Drawing.Size(337, 19)
         Me.Label4.TabIndex = 1
         Me.Label4.Text = "Filtrar"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -752,6 +756,34 @@ Partial Class frmPrincipal
         Me.MenuStrip1.Text = "MenuStrip1"
         Me.MenuStrip1.Visible = False
         '
+        'btnBuscarI
+        '
+        Me.btnBuscarI.Image = CType(resources.GetObject("btnBuscarI.Image"), System.Drawing.Image)
+        Me.btnBuscarI.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnBuscarI.Name = "btnBuscarI"
+        Me.btnBuscarI.Size = New System.Drawing.Size(46, 76)
+        Me.btnBuscarI.Text = "Buscar"
+        Me.btnBuscarI.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 79)
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 79)
+        '
+        'btnBuscarC
+        '
+        Me.btnBuscarC.Image = CType(resources.GetObject("btnBuscarC.Image"), System.Drawing.Image)
+        Me.btnBuscarC.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnBuscarC.Name = "btnBuscarC"
+        Me.btnBuscarC.Size = New System.Drawing.Size(46, 76)
+        Me.btnBuscarC.Text = "Buscar"
+        Me.btnBuscarC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -834,7 +866,7 @@ Partial Class frmPrincipal
     Friend WithEvents tbpClientes As System.Windows.Forms.TabPage
     Friend WithEvents btnImprimir As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStrip3 As System.Windows.Forms.ToolStrip
-    Friend WithEvents btnBuscarI As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnQuitarI As System.Windows.Forms.ToolStripButton
     Friend WithEvents txtFiltroI As System.Windows.Forms.ToolStripTextBox
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cbxCamposI As System.Windows.Forms.ToolStripComboBox
@@ -854,7 +886,7 @@ Partial Class frmPrincipal
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Panel9 As System.Windows.Forms.Panel
     Friend WithEvents ToolStrip4 As System.Windows.Forms.ToolStrip
-    Friend WithEvents btnBuscarC As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnQuitarC As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStrip5 As System.Windows.Forms.ToolStrip
     Friend WithEvents txtFiltroC As System.Windows.Forms.ToolStripTextBox
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
@@ -871,4 +903,8 @@ Partial Class frmPrincipal
     Friend WithEvents ToolStrip9 As System.Windows.Forms.ToolStrip
     Friend WithEvents btnAcercade1 As System.Windows.Forms.ToolStripButton
     Friend WithEvents btnEliminarC As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnBuscarI As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents btnBuscarC As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
 End Class

@@ -67,7 +67,11 @@ Module modDBGClientes
                     dttTabla = dtsObtenerDataSetSOL(strQuery).Tables(0)
                 End If
 
-                objCliente.Id = CLng(dttTabla(0)(0).ToString) + 1
+                If dttTabla(0)(0).ToString <> "" Then
+                    objCliente.Id = CLng(dttTabla(0)(0).ToString) + 1
+                Else
+                    objCliente.Id = 40001
+                End If
                 strQuery = Clie_strQueryNuevoCliente(objCliente)
             End If
 
@@ -111,8 +115,7 @@ Module modDBGClientes
                 dttIncidencias = Inci_dttObtenerIncidencias(, strWhere)
                 For Each objRow In dttIncidencias.Rows
                     lngIncidencia = objRow(gc_strLP_I_Incidencia)
-                    strQuery = Inci_EliminarIncidencia(lngIncidencia)
-                    If Not blnEjecutarQuery(strQuery) Then
+                    If Not Inci_EliminarIncidencia(lngIncidencia) Then
                         blnResultado = False
                         Exit For
                     Else

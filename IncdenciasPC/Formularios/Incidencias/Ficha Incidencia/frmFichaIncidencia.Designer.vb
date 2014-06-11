@@ -53,7 +53,7 @@ Partial Class frmFichaIncidencia
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.tspMant2 = New System.Windows.Forms.ToolStrip()
-        Me.btnGuardaryCerrar = New System.Windows.Forms.ToolStripButton()
+        Me.btnGuardarySeguir = New System.Windows.Forms.ToolStripButton()
         Me.btnImprimir = New System.Windows.Forms.ToolStripButton()
         Me.tspMant1 = New System.Windows.Forms.ToolStrip()
         Me.btnGuardar = New System.Windows.Forms.ToolStripButton()
@@ -436,9 +436,9 @@ Partial Class frmFichaIncidencia
         Me.tspMant2.Dock = System.Windows.Forms.DockStyle.Left
         Me.tspMant2.GripMargin = New System.Windows.Forms.Padding(0)
         Me.tspMant2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.tspMant2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnGuardaryCerrar, Me.btnImprimir})
+        Me.tspMant2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnGuardarySeguir, Me.btnImprimir})
         Me.tspMant2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow
-        Me.tspMant2.Location = New System.Drawing.Point(56, 0)
+        Me.tspMant2.Location = New System.Drawing.Point(87, 0)
         Me.tspMant2.Name = "tspMant2"
         Me.tspMant2.Padding = New System.Windows.Forms.Padding(0)
         Me.tspMant2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
@@ -446,15 +446,15 @@ Partial Class frmFichaIncidencia
         Me.tspMant2.TabIndex = 3
         Me.tspMant2.Text = "ToolStrip2"
         '
-        'btnGuardaryCerrar
+        'btnGuardarySeguir
         '
-        Me.btnGuardaryCerrar.Image = CType(resources.GetObject("btnGuardaryCerrar.Image"), System.Drawing.Image)
-        Me.btnGuardaryCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnGuardaryCerrar.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnGuardaryCerrar.Name = "btnGuardaryCerrar"
-        Me.btnGuardaryCerrar.Size = New System.Drawing.Size(121, 20)
-        Me.btnGuardaryCerrar.Text = "Guardar y cerrar"
-        Me.btnGuardaryCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnGuardarySeguir.Image = CType(resources.GetObject("btnGuardarySeguir.Image"), System.Drawing.Image)
+        Me.btnGuardarySeguir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnGuardarySeguir.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnGuardarySeguir.Name = "btnGuardarySeguir"
+        Me.btnGuardarySeguir.Size = New System.Drawing.Size(121, 20)
+        Me.btnGuardarySeguir.Text = "Guardar y seguir"
+        Me.btnGuardarySeguir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'btnImprimir
         '
@@ -478,7 +478,7 @@ Partial Class frmFichaIncidencia
         Me.tspMant1.Location = New System.Drawing.Point(0, 0)
         Me.tspMant1.Name = "tspMant1"
         Me.tspMant1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.tspMant1.Size = New System.Drawing.Size(56, 79)
+        Me.tspMant1.Size = New System.Drawing.Size(87, 79)
         Me.tspMant1.TabIndex = 2
         Me.tspMant1.Text = "ToolStrip1"
         '
@@ -513,7 +513,7 @@ Partial Class frmFichaIncidencia
         Me.MenuStrip1.Text = "MenuStrip1"
         Me.MenuStrip1.Visible = False
         '
-        'frmIncidencia
+        'frmFichaIncidencia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -526,7 +526,7 @@ Partial Class frmFichaIncidencia
         Me.MainMenuStrip = Me.MenuStrip1
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "frmIncidencia"
+        Me.Name = "frmFichaIncidencia"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Incidencia"
         Me.Panel1.ResumeLayout(False)
@@ -563,7 +563,7 @@ Partial Class frmFichaIncidencia
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
-    Friend WithEvents btnGuardaryCerrar As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnGuardarySeguir As System.Windows.Forms.ToolStripButton
     Friend WithEvents btnImprimir As System.Windows.Forms.ToolStripButton
     Friend WithEvents tspMant1 As System.Windows.Forms.ToolStrip
     Friend WithEvents btnGuardar As System.Windows.Forms.ToolStripButton

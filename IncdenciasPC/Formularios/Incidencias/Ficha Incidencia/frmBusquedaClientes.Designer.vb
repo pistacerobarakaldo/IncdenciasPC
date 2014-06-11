@@ -37,7 +37,7 @@ Partial Class frmBusquedaClientes
         Me.cbxCampos.Location = New System.Drawing.Point(3, 6)
         Me.cbxCampos.Name = "cbxCampos"
         Me.cbxCampos.Size = New System.Drawing.Size(174, 21)
-        Me.cbxCampos.TabIndex = 5
+        Me.cbxCampos.TabIndex = 3
         '
         'dgvClientes
         '
@@ -55,14 +55,14 @@ Partial Class frmBusquedaClientes
         Me.txtCampo.Location = New System.Drawing.Point(183, 6)
         Me.txtCampo.Name = "txtCampo"
         Me.txtCampo.Size = New System.Drawing.Size(182, 20)
-        Me.txtCampo.TabIndex = 6
+        Me.txtCampo.TabIndex = 1
         '
         'btnBuscar
         '
         Me.btnBuscar.Location = New System.Drawing.Point(371, 6)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(75, 23)
-        Me.btnBuscar.TabIndex = 7
+        Me.btnBuscar.TabIndex = 2
         Me.btnBuscar.Text = "Buscar"
         Me.btnBuscar.UseVisualStyleBackColor = True
         '
@@ -99,6 +99,7 @@ Partial Class frmBusquedaClientes
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmBusquedaClientes"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Buscar Cliente"
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

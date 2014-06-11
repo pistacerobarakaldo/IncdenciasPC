@@ -1,4 +1,6 @@
 ﻿Imports CrystalDecisions.CrystalReports.Engine
+Imports System.IO
+Imports System.Data.OleDb
 
 Public Enum TipoImpreso
     Ticket
@@ -20,15 +22,30 @@ Public Class frmImprimirIncidencia
         Dim blnError As Boolean
 
         Dim blnResultado As Boolean
-        
+        Dim strSQL As String
+        Dim dtsDataSet As New DataSet
+        Dim dtaDataAdapter As New OleDbDataAdapter
+
         Try
             Select Case udtTipoDoc
                 Case TipoImpreso.Ticket
-                    m_objReporte = New IncidenciaRPT
+                    m_objReporte = gv_objReports.IncidenciaTicket
                 Case TipoImpreso.Folio
                     'Aqui deberia ir otro tipo
-                    m_objReporte = New IncidenciaRPT
+                    m_objReporte = gv_objReports.IncidenciaTicket
             End Select
+
+            'Se obtiene el dataset
+            strSQL = "SELECT * FROM " & gc_strDB_TABLA_Incidencias
+            dtaDataAdapter.SelectCommand = New OleDbCommand(strSQL, ConexionDB)
+            dtaDataAdapter.Fill(dtsDataSet, gc_strDB_TABLA_Incidencias)
+
+            strSQL = "SELECT * FROM " & gc_strDB_TABLA_TiposEquipos
+            dtaDataAdapter.SelectCommand = New OleDbCommand(strSQL, ConexionDB)
+            dtaDataAdapter.Fill(dtsDataSet, gc_strDB_TABLA_TiposEquipos)
+            
+            m_objReporte.SetDataSource(dtsDataSet)
+
             m_objReporte.SetParameterValue("IdIncidencia", lngIncidencia)
             m_objReporte.PrintOptions.PrinterName = gv_strImpresoraIncidencias
             nudCopias.Value = 2

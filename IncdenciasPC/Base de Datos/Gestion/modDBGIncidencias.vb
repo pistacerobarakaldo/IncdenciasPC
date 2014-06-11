@@ -188,7 +188,11 @@ Module modDBGIncidencias
                 strQuery = Config_strQueryIndiceMaximo(gc_strDB_TABLA_Incidencias, gc_strDB_I_Incidencia)
                 dttTabla = dtsObtenerDataSet(strQuery).Tables(0)
 
-                objIncidencia.Id = CLng(dttTabla(0)(0).ToString) + 1
+                If dttTabla(0)(0).ToString <> "" Then
+                    objIncidencia.Id = dttTabla(0)(0).ToString + 1
+                Else
+                    objIncidencia.Id = CLng(Today.Year & "001")
+                End If
                 strQuery = Inci_strQueryNuevaIncidencia(objIncidencia)
             End If
 

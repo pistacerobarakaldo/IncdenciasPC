@@ -2,6 +2,7 @@
     Const mc_strNombre_Modulo As String = "frmDetallesIncidencia"
 
     Private m_dblPresupuesto As Double
+    Private m_objCliente As clsCliente
 
     Public Function blnCargarDetalles(ByVal objIncidencia As clsIncidencia) As Boolean
 
@@ -9,11 +10,13 @@
         Dim blnError As Boolean
 
         Try
+            LimpiarFormulario()
             ConfigurarComboBox(cbxEstado, Inci_dttObtenerEstados(), gc_strDB_I_Estado, gc_strDB_D_Estado)
             ConfigurarComboBox(cbxTipoEquipo, Inci_dttObtenerTiposEquipo(), gc_strDB_I_TipoEquipo, gc_strDB_D_TipoEquipo)
 
             txtIncidencia.Text = IIf(objIncidencia.Id > 0, objIncidencia.Id, "")
             txtIdCliente.Text = objIncidencia.IdCliente
+            m_objCliente = New clsCliente(, objIncidencia.IdCliente)
             txtNomCliente.Text = objIncidencia.Cliente
             dtpFecha.Value = objIncidencia.Fecha
             cbxEstado.SelectedValue = objIncidencia.Estado
@@ -61,6 +64,7 @@
             chbGarantia.Checked = False
             txtAveria.Text = ""
             txtResolucion.Text = ""
+            m_objCliente = Nothing
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
@@ -70,11 +74,12 @@
     'Descripcion......: Controla que el texto introducido sean solo numeros 
     'Fecha............: 22/05/2014
     '<FIN CABECERA>-------------------------------------------
-    Private Sub Telefonos_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTelefono1.KeyPress, _
-                                                                                                                      txtTelefono2.KeyPress
+    Private Sub TelefonosYCliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTelefono1.KeyPress, _
+                                                                                                                              txtTelefono2.KeyPress, _
+                                                                                                                              txtIdCliente.KeyPress
 
-        Const strNombre_Funcion As String = "Telefonos_KeyPress"
-        
+        Const strNombre_Funcion As String = "TelefonosYCliente_KeyPress"
+
         Try
             'Comprueba si el caracter es un numero o la tecla de retroceso (borrar)
             If Not Char.IsNumber(e.KeyChar) And (e.KeyChar = ChrW(Keys.Back)) = False Then
@@ -120,6 +125,7 @@
 
     Public WriteOnly Property AnadirCliente As clsCliente
         Set(ByVal value As clsCliente)
+            m_objCliente = value
             txtIdCliente.Text = value.Id
             txtNomCliente.Text = value.NombreFiscal
             txtContacto.Text = value.Contacto
@@ -130,11 +136,7 @@
 
     Public ReadOnly Property ObtenerCliente As Long
         Get
-            If txtIdCliente.Text <> "" Then
-                Return CLng(txtIdCliente.Text)
-            Else
-                Return 0
-            End If
+            Return m_objCliente.Id
         End Get
     End Property
 
@@ -146,8 +148,8 @@
         Try
             'Reasignamos los valores a la incidencia y la devolvemos al formulario para que la guarde
             objIncidencia.Id = IIf(txtIncidencia.Text <> "", txtIncidencia.Text, 0)
-            objIncidencia.IdCliente = txtIdCliente.Text
-            objIncidencia.Cliente = txtNomCliente.Text
+            objIncidencia.IdCliente = m_objCliente.Id
+            objIncidencia.Cliente = m_objCliente.NombreFiscal
             objIncidencia.Fecha = dtpFecha.Value
             objIncidencia.Estado = cbxEstado.SelectedValue
             objIncidencia.Contacto = txtContacto.Text
@@ -181,4 +183,20 @@
         End Set
     End Property
 
+    Private Sub txtIdCliente_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtIdCliente.KeyDown
+
+        Const strNombre_Funcion As String = "txtIdCliente_KeyDown"
+        
+        Try
+            If e.KeyCode = Keys.Enter Then
+                If txtIdCliente.Text <> "" Then
+                    frmFichaIncidencia.blnBuscarCliente(txtIdCliente.Text)
+                End If
+            ElseIf e.KeyCode = Keys.F1 Then
+                frmFichaIncidencia.blnBuscarCliente()
+            End If
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
 End Class

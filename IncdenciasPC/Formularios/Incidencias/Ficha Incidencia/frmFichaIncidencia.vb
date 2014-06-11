@@ -196,7 +196,7 @@
         End Set
     End Property
 
-    Private Sub Mantenimiento_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click, btnGuardaryCerrar.Click, btnImprimir.Click
+    Private Sub Mantenimiento_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click, btnGuardarySeguir.Click, btnImprimir.Click
 
         Const strNombre_Funcion As String = "Mantenimiento_Click"
 
@@ -206,9 +206,9 @@
             objBoton = sender
             Select Case objBoton.Name
                 Case btnGuardar.Name
-                    GuardarIncidencia(False, False)
-                Case btnGuardaryCerrar.Name
                     GuardarIncidencia(True, False)
+                Case btnGuardarySeguir.Name
+                    GuardarIncidencia(False, False)
                 Case btnImprimir.Name
                     'Imprimir la incidencia en la impresora de tickets
                     If MsgBox("La incidencia debe guardarse antes de imprimir ¿Desea guardar la incidencia ahora?", _
@@ -216,6 +216,8 @@
                         GuardarIncidencia(False, True)
                         If frmImprimirIncidencia.CargarFormulario(m_objIncidencia.Id, gv_lngTipoImpresoIncidencia) Then
                             frmImprimirIncidencia.ShowDialog()
+                        Else
+                            MsgBox("Ha ocurrido un error al cargar la impresion", MsgBoxStyle.Critical, "Imprimir incidencia")
                         End If
                     End If
             End Select
@@ -256,6 +258,7 @@
 
                     If Inci_GuardarIncidencia(objIncidencia) Then
                         m_objIncidencia = objIncidencia
+                        frmDetallesIncidencia.blnCargarDetalles(m_objIncidencia)
                         If Not blnDesdeImprimir Then
                             MsgBox("Se ha guardado la incidencia", _
                            MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Salvado de datos")
@@ -291,12 +294,7 @@
             objBoton = sender
             Select Case objBoton.Name
                 Case btnBuscar.Name
-                    frmBusquedaClientes.ShowDialog()
-                    objCliente = frmBusquedaClientes.Cliente
-                    If Not objCliente Is Nothing Then
-                        frmDetallesIncidencia.AnadirCliente = objCliente
-                        HabilitarClienteLineas(ActualForm.Detalles)
-                    End If
+                    blnBuscarCliente
                 Case btnVerCliente.Name
                     objCliente = New clsCliente(, frmDetallesIncidencia.ObtenerCliente)
                     If frmFichaCliente.blnCargarCliente(objCliente) Then
@@ -316,6 +314,40 @@
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
     End Sub
+
+    Public Function blnBuscarCliente(Optional ByVal lngIdCLiente As Long = 0) As Boolean
+
+        Const strNombre_Funcion As String = "Cliente_Click"
+        Dim blnError As Boolean
+
+        Dim objCliente As clsCliente
+
+        Try
+            If lngIdCLiente > 0 Then
+                objCliente = New clsCliente(, lngIdCLiente)
+                If Not objCliente Is Nothing Then
+                    If objCliente.Id > 0 Then
+                        frmDetallesIncidencia.AnadirCliente = objCliente
+                        HabilitarClienteLineas(ActualForm.Detalles)
+                    End If
+                End If
+            Else
+                frmBusquedaClientes.ShowDialog()
+                objCliente = frmBusquedaClientes.Cliente
+                If Not objCliente Is Nothing Then
+                    If objCliente.Id > 0 Then
+                        frmDetallesIncidencia.AnadirCliente = objCliente
+                        HabilitarClienteLineas(ActualForm.Detalles)
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+            blnError = True
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        Finally
+            blnBuscarCliente = not blnError 
+        End Try
+    End Function
 
     Private Sub Lineas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNueva.Click, btnDuplicar.Click, btnModificar.Click, btnEliminar.Click
 

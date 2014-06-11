@@ -257,7 +257,7 @@ Partial Class frmDetallesCliente
         Me.txtObservaciones.Multiline = True
         Me.txtObservaciones.Name = "txtObservaciones"
         Me.txtObservaciones.Size = New System.Drawing.Size(310, 248)
-        Me.txtObservaciones.TabIndex = 30
+        Me.txtObservaciones.TabIndex = 14
         '
         'txtId
         '
@@ -272,84 +272,84 @@ Partial Class frmDetallesCliente
         Me.txtNIF.Location = New System.Drawing.Point(139, 41)
         Me.txtNIF.Name = "txtNIF"
         Me.txtNIF.Size = New System.Drawing.Size(98, 21)
-        Me.txtNIF.TabIndex = 32
+        Me.txtNIF.TabIndex = 1
         '
         'txtNombreFiscal
         '
         Me.txtNombreFiscal.Location = New System.Drawing.Point(139, 68)
         Me.txtNombreFiscal.Name = "txtNombreFiscal"
         Me.txtNombreFiscal.Size = New System.Drawing.Size(714, 21)
-        Me.txtNombreFiscal.TabIndex = 33
+        Me.txtNombreFiscal.TabIndex = 2
         '
         'txtNombreComercial
         '
         Me.txtNombreComercial.Location = New System.Drawing.Point(139, 95)
         Me.txtNombreComercial.Name = "txtNombreComercial"
         Me.txtNombreComercial.Size = New System.Drawing.Size(714, 21)
-        Me.txtNombreComercial.TabIndex = 34
+        Me.txtNombreComercial.TabIndex = 3
         '
         'txtDomicilio
         '
         Me.txtDomicilio.Location = New System.Drawing.Point(139, 152)
         Me.txtDomicilio.Name = "txtDomicilio"
         Me.txtDomicilio.Size = New System.Drawing.Size(398, 21)
-        Me.txtDomicilio.TabIndex = 35
+        Me.txtDomicilio.TabIndex = 4
         '
         'txtCP
         '
         Me.txtCP.Location = New System.Drawing.Point(139, 179)
         Me.txtCP.Name = "txtCP"
         Me.txtCP.Size = New System.Drawing.Size(98, 21)
-        Me.txtCP.TabIndex = 36
+        Me.txtCP.TabIndex = 5
         '
         'txtPoblacion
         '
         Me.txtPoblacion.Location = New System.Drawing.Point(315, 179)
         Me.txtPoblacion.Name = "txtPoblacion"
         Me.txtPoblacion.Size = New System.Drawing.Size(222, 21)
-        Me.txtPoblacion.TabIndex = 37
+        Me.txtPoblacion.TabIndex = 6
         '
         'txtProvincia
         '
         Me.txtProvincia.Location = New System.Drawing.Point(139, 206)
         Me.txtProvincia.Name = "txtProvincia"
         Me.txtProvincia.Size = New System.Drawing.Size(183, 21)
-        Me.txtProvincia.TabIndex = 38
+        Me.txtProvincia.TabIndex = 7
         '
         'txtPais
         '
         Me.txtPais.Location = New System.Drawing.Point(365, 206)
         Me.txtPais.Name = "txtPais"
         Me.txtPais.Size = New System.Drawing.Size(172, 21)
-        Me.txtPais.TabIndex = 39
+        Me.txtPais.TabIndex = 8
         '
         'txtTelefono
         '
         Me.txtTelefono.Location = New System.Drawing.Point(139, 298)
         Me.txtTelefono.Name = "txtTelefono"
         Me.txtTelefono.Size = New System.Drawing.Size(398, 21)
-        Me.txtTelefono.TabIndex = 40
+        Me.txtTelefono.TabIndex = 10
         '
         'txtMovil
         '
         Me.txtMovil.Location = New System.Drawing.Point(139, 325)
         Me.txtMovil.Name = "txtMovil"
         Me.txtMovil.Size = New System.Drawing.Size(398, 21)
-        Me.txtMovil.TabIndex = 41
+        Me.txtMovil.TabIndex = 11
         '
         'txtFax
         '
         Me.txtFax.Location = New System.Drawing.Point(139, 352)
         Me.txtFax.Name = "txtFax"
         Me.txtFax.Size = New System.Drawing.Size(398, 21)
-        Me.txtFax.TabIndex = 42
+        Me.txtFax.TabIndex = 12
         '
         'txtMail
         '
         Me.txtMail.Location = New System.Drawing.Point(139, 379)
         Me.txtMail.Name = "txtMail"
         Me.txtMail.Size = New System.Drawing.Size(398, 21)
-        Me.txtMail.TabIndex = 43
+        Me.txtMail.TabIndex = 13
         '
         'txtFechaAlta
         '
@@ -390,7 +390,7 @@ Partial Class frmDetallesCliente
         Me.txtContacto.Location = New System.Drawing.Point(139, 271)
         Me.txtContacto.Name = "txtContacto"
         Me.txtContacto.Size = New System.Drawing.Size(398, 21)
-        Me.txtContacto.TabIndex = 49
+        Me.txtContacto.TabIndex = 9
         '
         'Label19
         '

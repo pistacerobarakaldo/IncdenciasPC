@@ -135,7 +135,7 @@ Public Class frmPrincipal
         End Try
     End Sub
 
-    Private Sub Incidencias_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNueva.Click, btnModificarI.Click, btnEliminarI.Click, btnImprimir.Click, btnBuscarI.Click, btnActualizarI.Click
+    Private Sub Incidencias_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNueva.Click, btnModificarI.Click, btnEliminarI.Click, btnImprimir.Click, btnQuitarI.Click, btnActualizarI.Click
 
         Const strNombre_Funcion As String = "Incidencias_Click"
 
@@ -171,8 +171,14 @@ Public Class frmPrincipal
                     lngIncidencia = frmListadoIncidencias.DataGridIncidencias.SelectedRows(0).Cells(gc_strLP_I_Incidencia).Value
                     If frmImprimirIncidencia.CargarFormulario(lngIncidencia, gv_lngTipoImpresoIncidencia) Then
                         frmImprimirIncidencia.ShowDialog()
+                    Else
+                        MsgBox("Ha ocurrido un error al cargar la impresion", MsgBoxStyle.Critical, "Imprimir incidencia")
                     End If
                 Case btnBuscarI.Name
+                    AplicarFiltroIncidencias()
+                Case btnQuitarI.Name
+                    txtFiltroI.Text = ""
+                    cbxCamposI.SelectedItem = Nothing
                     AplicarFiltroIncidencias()
                 Case btnActualizarI.Name
                     ActualizarIncidencias()
@@ -182,14 +188,14 @@ Public Class frmPrincipal
         End Try
     End Sub
 
-    Private Sub Clientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevo.Click, btnModificarC.Click, btnEliminarC.Click, btnBuscarC.Click, btnActualizarC.Click
+    Private Sub Clientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevo.Click, btnModificarC.Click, btnEliminarC.Click, btnQuitarC.Click, btnActualizarC.Click
 
         Const strNombre_Funcion As String = "Clientes_Click"
 
         Dim objBoton As ToolStripButton
         Dim blnResultado As Boolean
         Dim objCliente As clsCliente
-        
+
         Try
             objBoton = sender
             Select Case objBoton.Name
@@ -218,6 +224,10 @@ Public Class frmPrincipal
                     ActualizarClientes()
                 Case btnBuscarC.Name
                     AplicarFiltroClientes()
+                Case btnQuitarC.Name
+                    txtFiltroC.Text = ""
+                    cbxCamposC.SelectedItem = Nothing
+                    AplicarFiltroClientes()
                 Case btnActualizarC.Name
                     ActualizarClientes()
             End Select
@@ -234,6 +244,27 @@ Public Class frmPrincipal
 
         Try
             AplicarFiltroIncidencias()
+        Catch ex As Exception
+            AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
+        End Try
+    End Sub
+
+    Private Sub txtFiltros_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtFiltroC.KeyDown, txtFiltroI.KeyDown
+
+        Const strNombre_Funcion As String = "txtFiltros_KeyDown"
+
+        Dim objTexto As ToolStripTextBox
+
+        Try
+            If e.KeyCode = Keys.Enter Then
+                objTexto = sender
+                Select Case objTexto.Name
+                    Case txtFiltroC.Name
+                        AplicarFiltroClientes()
+                    Case txtFiltroI.Name
+                        AplicarFiltroIncidencias()
+                End Select
+            End If
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
@@ -413,7 +444,6 @@ Public Class frmPrincipal
         Try
             frmCondiguracion.ShowDialog()
             If frmCondiguracion.Guardado Then
-                CerrarAplicacion()
                 CargarAplicacion()
             End If
         Catch ex As Exception
@@ -477,4 +507,5 @@ Public Class frmPrincipal
         End Get
     End Property
 
+    
 End Class

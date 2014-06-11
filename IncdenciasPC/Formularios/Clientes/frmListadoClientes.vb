@@ -32,8 +32,10 @@
 
         Try
             objView = dgvClientes.DataSource
-            objView.RowFilter = strFiltro
-            CargarClientes(dgvClientes, udtTipoDeCarga.SoloAjustar)
+            If Not objView Is Nothing Then
+                objView.RowFilter = strFiltro
+                CargarClientes(dgvClientes, udtTipoDeCarga.SoloAjustar)
+            End If
         Catch ex As Exception
             blnError = True
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
@@ -54,7 +56,9 @@
         Try
             CargarClientes(dgvClientes, udtTipoDeCarga.CargarAjustar)
             objView = dgvClientes.DataSource
-            objView.RowFilter = strFiltro
+            If Not objView Is Nothing Then
+                objView.RowFilter = strFiltro
+            End If
         Catch ex As Exception
             blnError = True
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)

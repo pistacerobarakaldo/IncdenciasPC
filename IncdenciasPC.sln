@@ -1,18 +1,30 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IncdenciasPC", "IncdenciasPC\IncdenciasPC.vbproj", "{7B81DD76-083A-4285-8110-4825A4E1481F}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IncidenciasPC", "IncdenciasPC\IncidenciasPC.vbproj", "{7B81DD76-083A-4285-8110-4825A4E1481F}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Incidencias Setup", "Incidencias Setup\Incidencias Setup.vdproj", "{C7E484D7-5392-403F-9932-241585600B57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B81DD76-083A-4285-8110-4825A4E1481F}.Debug|x64.ActiveCfg = Debug|x64
+		{7B81DD76-083A-4285-8110-4825A4E1481F}.Debug|x64.Build.0 = Debug|x64
 		{7B81DD76-083A-4285-8110-4825A4E1481F}.Debug|x86.ActiveCfg = Debug|x86
 		{7B81DD76-083A-4285-8110-4825A4E1481F}.Debug|x86.Build.0 = Debug|x86
+		{7B81DD76-083A-4285-8110-4825A4E1481F}.Release|x64.ActiveCfg = Release|x64
+		{7B81DD76-083A-4285-8110-4825A4E1481F}.Release|x64.Build.0 = Release|x64
 		{7B81DD76-083A-4285-8110-4825A4E1481F}.Release|x86.ActiveCfg = Release|x86
 		{7B81DD76-083A-4285-8110-4825A4E1481F}.Release|x86.Build.0 = Release|x86
+		{C7E484D7-5392-403F-9932-241585600B57}.Debug|x64.ActiveCfg = Debug
+		{C7E484D7-5392-403F-9932-241585600B57}.Debug|x86.ActiveCfg = Debug
+		{C7E484D7-5392-403F-9932-241585600B57}.Release|x64.ActiveCfg = Release
+		{C7E484D7-5392-403F-9932-241585600B57}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -31,8 +31,10 @@
         
         Try
             objView = dgvIncidencias.DataSource
-            objView.RowFilter = strFiltro
-            CargarIncidencias(dgvIncidencias, udtTipoDeCarga.SoloAjustar)
+            If Not objView Is Nothing Then
+                objView.RowFilter = strFiltro
+                CargarIncidencias(dgvIncidencias, udtTipoDeCarga.SoloAjustar)
+            End If
         Catch ex As Exception
             blnError = True
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
@@ -77,7 +79,7 @@
         End Try
     End Sub
 
-    Private Sub dgvIncidencias_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvIncidencias.DoubleClick
+    Private Sub dgvIncidencias_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvIncidencias.CellDoubleClick
 
         Const strNombre_Funcion As String = "dgvIncidencias_CellDoubleClick"
         Dim blnError As Boolean
@@ -113,7 +115,11 @@
         Const strNombre_Funcion As String = "dgvIncidencias_RowStateChanged"
 
         Try
-            txtAveria.Text = dgvIncidencias.SelectedRows(0).Cells(gc_strLP_D_Averia).Value
+            If dgvIncidencias.SelectedRows.Count > 0 Then
+                txtAveria.Text = dgvIncidencias.SelectedRows(0).Cells(gc_strLP_D_Averia).Value
+            Else
+                txtAveria.Text = ""
+            End If
         Catch ex As Exception
             AddLog(ex.Message, mc_strNombre_Modulo, strNombre_Funcion)
         End Try
